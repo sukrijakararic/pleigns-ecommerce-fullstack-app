@@ -36,38 +36,17 @@ app.use(passport.session());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.json({
-    Greetings: "Welcome to Pleigns! The best place to buy planes!",
-    to_Make_Account_Or_Log_in:
-      "Please use POST /users/register or POST /users/login. For /register please input a json of email, password, firstname and lastname and for /login please input a json of email and password. To see all users, go to GET /users. You can also GET user/:id",
-    to_Change_Password:
-      "Please use PUT /users/changePassword. For /changePassword please input a json of email and password",
-    to_Delete_User:
-      "Please use DELETE /users/:id to delete a user.",
-    to_Log_out:
-        "Please use POST /users/logout.",
-    to_Get_Products:
-      "Please use GET /products. You can also GET products/:productId",
-    to_Add_To_Cart:
-      "Please use POST /cart/addToCart. For /addToCart please input a json of productId and qty (qty can be amount you like)",
-    to_See_Your_Cart: "Please use GET /cart/myCart",
-    to_Delete_Item_From_Cart:
-      "Please use DELETE /cart/deleteItemFromCart. For /deleteItemFromCart please input a json of the specific productId you want to delete from your cart",
-    to_checkout: "Please use POST /cart/checkout",
-    to_View_Your_Orders: "Please use GET /orders/myOrders",
-    to_View_Your_Items_ordered: "Please use GET /orders/viewOrderItems",
-    to_Delete_Your_Order:
-      "Please use DELETE /orders/deleteOrder",
-    to_See_Docs: "Please use GET /docs",
-    });
-});
-
 userRouter(app);
 productsRouter(app);
 cartRouter(app);
 orderRouter(app);
 docs(app);
+
+app.get("/", (req, res, next) => {
+  res.json({
+    message: "Hello World"
+  })
+})
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

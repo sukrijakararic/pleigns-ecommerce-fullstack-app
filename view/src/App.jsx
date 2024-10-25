@@ -1,12 +1,24 @@
+import "./App.css";
+import { useEffect, useState } from "react";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+} from "react-router-dom";
 
+import { Root } from "./components/Root/Root";
 
+const appRouter = createBrowserRouter(
+  createRoutesFromElements(<Route path="/" element={<Root />}></Route>)
+);
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
-  )
+    <main className="App">
+      <RouterProvider router={appRouter} />;
+    </main>
+  );
 }
 
-export default App
+export default App;
