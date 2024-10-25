@@ -1,0 +1,10 @@
+.Navigation {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 1rem;
+    font-family: 'Roboto';
+}
+
+.cartIcon {
+    width: 2rem;
+}

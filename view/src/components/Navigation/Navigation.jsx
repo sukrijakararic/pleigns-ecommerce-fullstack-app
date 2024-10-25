@@ -1,6 +1,9 @@
 import React from 'react'
 import {getHello } from '../../utils/utils'
 import { useEffect, useState } from 'react'
+import styles from './Navigation.module.css'
+import { Link } from 'react-router-dom'
+
 
 export const Navigation = () => {
 const [hello, setHello] = useState({})
@@ -17,10 +20,10 @@ useEffect(() => {
 
 
   return (
-    <nav>
-        <h2>{hello.message}</h2>
-        <h2>click me</h2>
-        <h2>click me</h2>
+    <nav className={styles.Navigation}>
+        <h4>Planes</h4>
+        <h4>Log In</h4>
+        <img className={styles.cartIcon} src="\src\assets\luggage-cart-solid-svgrepo-com.svg" alt="" />
 
     </nav>
   )
