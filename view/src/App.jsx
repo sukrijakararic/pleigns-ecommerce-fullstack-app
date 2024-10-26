@@ -8,11 +8,11 @@ import {
 } from "react-router-dom";
 
 import { Root } from "./components/Root/Root";
-import { LandingPagePic } from "./components/LandingPagePic/LandingPagePic";
+import { LandingPage } from "./components/LandingPagePic/LandingPage";
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(<Route path="/" element={<Root />}>
-    <Route path="index"  element={<LandingPagePic />}/>
+    <Route index  element={<LandingPage />}/>
   </Route>)
 );
 
