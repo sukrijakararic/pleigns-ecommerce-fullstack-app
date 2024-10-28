@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 import { Root } from "./components/Root/Root";
-import { LandingPage } from "./components/LandingPagePic/LandingPage";
+import { LandingPage } from "./components/LandingPage/LandingPage";
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(<Route path="/" element={<Root />}>

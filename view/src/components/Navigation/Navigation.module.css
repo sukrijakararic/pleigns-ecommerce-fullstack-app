@@ -5,8 +5,20 @@
     font-family: 'Roboto';
 
 }
+
+.navLink {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: black;
+}
+
+.navLink:hover {
+    text-decoration: underline;
+}
+
 .leftNav {
     margin-left: 1rem;
+    display: flex;
 }
 
 .rightNav {

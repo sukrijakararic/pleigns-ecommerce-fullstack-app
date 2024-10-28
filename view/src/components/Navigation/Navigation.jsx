@@ -5,8 +5,8 @@ import styles from "./Navigation.module.css";
 import { Link } from "react-router-dom";
 
 export const Navigation = () => {
+  // below is an example of how to use the utils function and get a req from the server
   const [hello, setHello] = useState({});
-
   const makeHello = async () => {
     const data = await getHello();
     console.log(data);
@@ -16,19 +16,27 @@ export const Navigation = () => {
   useEffect(() => {
     makeHello();
   }, []);
+  // ends here ^
 
   return (
     <nav className={styles.Navigation}>
       <div className={styles.leftNav}>
-        <h4>Pleigns</h4>
+        <Link className={styles.navLink} to="">
+          Pleigns
+        </Link>
+        <Link className={styles.navLink} to="">
+          Products
+        </Link>
       </div>
       <div className={styles.rightNav}>
-        <h4>Log In</h4>
-        <img
-          className={styles.cartIcon}
-          src="\src\assets\luggage-cart-solid-svgrepo-com.svg"
-          alt=""
-        />
+        <Link className={styles.navLink} to="">Log In</Link>
+        <Link to="">
+          <img
+            className={styles.cartIcon}
+            src="\src\assets\luggage-cart-solid-svgrepo-com.svg"
+            alt=""
+          />
+        </Link>
       </div>
     </nav>
   );
