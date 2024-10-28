@@ -1,12 +1,14 @@
-import React from "react";
-import { getHello } from "../../utils/utils";
-import { useEffect, useState } from "react";
-import styles from "./Navigation.module.css";
-import { Link } from "react-router-dom";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import styles from './Navigation.module.css';
 
 export const Navigation = () => {
   // below is an example of how to use the utils function and get a req from the server
-  const [hello, setHello] = useState({});
+  /*const [hello, setHello] = useState({});
   const makeHello = async () => {
     const data = await getHello();
     console.log(data);
@@ -15,29 +17,23 @@ export const Navigation = () => {
 
   useEffect(() => {
     makeHello();
-  }, []);
+  }, []); */
   // ends here ^
 
   return (
-    <nav className={styles.Navigation}>
-      <div className={styles.leftNav}>
-        <Link className={styles.navLink} to="/">
-          Pleigns
-        </Link>
-        <Link className={styles.navLink} to="">
-          Products
-        </Link>
-      </div>
-      <div className={styles.rightNav}>
-        <Link className={styles.navLink} to="">Log In</Link>
-        <Link to="">
-          <img
-            className={styles.cartIcon}
-            src="\src\assets\luggage-cart-solid-svgrepo-com.svg"
-            alt=""
-          />
-        </Link>
-      </div>
-    </nav>
+    <Navbar expand="lg" className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand><Link to="/" className={styles.navLink}>Pleigns</Link></Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link><Link className={styles.navLink}>Contact</Link></Nav.Link>
+            <Nav.Link><Link className={styles.navLink}>Sign In</Link></Nav.Link>
+            <Nav.Link><Link className={styles.navLink}>About</Link></Nav.Link>
+            <Nav.Link><img src="src\assets\luggage-cart-solid-svgrepo-com.svg" className={styles.cartIcon} /></Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };

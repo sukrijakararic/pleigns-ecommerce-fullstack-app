@@ -7,6 +7,8 @@ import {
   Route,
 } from "react-router-dom";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { Root } from "./components/Root/Root";
 import { LandingPage } from "./components/LandingPage/LandingPage";
 

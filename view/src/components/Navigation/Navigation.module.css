@@ -1,10 +1,3 @@
-.Navigation {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 1rem;
-    font-family: 'Roboto';
-
-}
 
 .navLink {
     margin: 0 1rem;
@@ -16,17 +9,12 @@
     text-decoration: underline;
 }
 
-.leftNav {
-    margin-left: 1rem;
-    display: flex;
-}
-
-.rightNav {
-    display: flex;
-    margin-right: 1rem;
-}
-
 .cartIcon {
     width: 2rem;
-    margin-left: 3rem;
 }
+
+@media only screen and (max-width: 600px) {
+    .cartIcon {
+        margin-left: 1rem;
+    }
+ }
