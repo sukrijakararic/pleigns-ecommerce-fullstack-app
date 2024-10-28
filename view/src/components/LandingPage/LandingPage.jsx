@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './LandingPage.module.css'
+import { Registration } from '../registration/Registration'
 
 export const LandingPage = () => {
   return (
@@ -11,7 +12,7 @@ export const LandingPage = () => {
       <h5>We provide you with the best Aircrafts on the market. All checked and ready to fly.</h5>
     </div>
     <div>
-
+    <Registration />
     </div>
     </div>
   )
