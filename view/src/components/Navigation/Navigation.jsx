@@ -30,7 +30,7 @@ export const Navigation = () => {
             <Nav.Link><Link className={styles.navLink}>Contact</Link></Nav.Link>
             <Nav.Link><Link className={styles.navLink}>Sign In</Link></Nav.Link>
             <Nav.Link><Link className={styles.navLink}>About</Link></Nav.Link>
-            <Nav.Link><img src="src\assets\luggage-cart-solid-svgrepo-com.svg" className={styles.cartIcon} /></Nav.Link>
+            <Nav.Link><img title="Cart" src="src\assets\luggage-cart-solid-svgrepo-com.svg" className={styles.cartIcon} alt='Cart' /></Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
