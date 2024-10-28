@@ -7,6 +7,11 @@ export const LandingPage = () => {
       <div className={styles.landingText}>
       <h1>Welcome to Pleigns!</h1>
       <h2>Lets fly somewhere new</h2>
+
+      <p>We provide you with the best Aircrafts on the market. All checked and ready to fly.</p>
+    </div>
+    <div>
+
     </div>
     </div>
   )
