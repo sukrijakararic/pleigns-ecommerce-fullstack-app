@@ -8,7 +8,7 @@ export const LandingPage = () => {
       <h1>Welcome to Pleigns!</h1>
       <h2>Lets fly somewhere new</h2>
 
-      <p>We provide you with the best Aircrafts on the market. All checked and ready to fly.</p>
+      <h5>We provide you with the best Aircrafts on the market. All checked and ready to fly.</h5>
     </div>
     <div>
 
