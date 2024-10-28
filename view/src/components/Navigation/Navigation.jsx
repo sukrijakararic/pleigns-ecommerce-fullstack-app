@@ -21,7 +21,7 @@ export const Navigation = () => {
   return (
     <nav className={styles.Navigation}>
       <div className={styles.leftNav}>
-        <Link className={styles.navLink} to="">
+        <Link className={styles.navLink} to="/">
           Pleigns
         </Link>
         <Link className={styles.navLink} to="">
