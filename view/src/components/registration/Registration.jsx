@@ -19,6 +19,7 @@ export const Registration = () => {
     console.log(user);
     const response = await addUser(user);
     console.log(response);
+    event.target.reset();
   };
 
   return (
