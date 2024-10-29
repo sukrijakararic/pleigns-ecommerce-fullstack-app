@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 import { addUser } from "../../utils/utils";
 
 export const Registration = () => {
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
@@ -17,8 +16,9 @@ export const Registration = () => {
       password: data.get("password"),
     };
     const response = await addUser(user);
-    alert(response.message);
     event.target.reset();
+    document.getElementById("responseStatus").textContent = response.message;
+
   };
 
   return (
@@ -30,24 +30,28 @@ export const Registration = () => {
           label="Email address"
           className="mb-3"
         >
-          <Form.Control type="email" placeholder="" name="email"/>
+          <Form.Control type="email" placeholder="" name="email" />
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingInput2"
           label="First name"
           className="mb-3"
         >
-          <Form.Control type="text" placeholder="" name="firstname"/>
+          <Form.Control type="text" placeholder="" name="firstname" />
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingInput3"
           label="Last Name"
           className="mb-3"
         >
-          <Form.Control type="text" placeholder="" name="lastname"/>
+          <Form.Control type="text" placeholder="" name="lastname" />
         </FloatingLabel>
         <FloatingLabel controlId="floatingPassword" label="Password">
-          <Form.Control type="password" placeholder="Password" name="password"/>
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            name="password"
+          />
         </FloatingLabel>
         <Button
           variant="success"
@@ -56,7 +60,8 @@ export const Registration = () => {
         >
           Submit
         </Button>{" "}
-      </form>
+        <p className={styles.responseStatus} id="responseStatus"></p>
+      </form>{" "}
     </div>
   );
 };

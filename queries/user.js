@@ -22,7 +22,7 @@ const registerUserAndCreateCart = async (request, response, next) => {
 
   // Check if the email already exists in the database
   else if (existingUser) {
-    return response.status(400).json({ message: "user already exists" });
+    return response.status(400).json({ message: "Hmm.. That pilot already exists" });
   }
 
   // Hash the password using bcrypt
