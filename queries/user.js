@@ -13,9 +13,15 @@ const showUsers = async (request, response, next) => {
 const registerUserAndCreateCart = async (request, response, next) => {
   // Extract the email, password, firstname, and lastname from the request body
   const { email, password, firstname, lastname, } = request.body;
+  const existingUser = await getUserByEmail(email);
+
   if (!email || !password || !firstname || !lastname) {
     response.status(400).json({ message: "All fields are required" });
-    
+  }
+
+  // Check if the email already exists in the database
+  else if (existingUser) {
+    return response.status(400).json({ message: "user already exists" });
   }
 
   // Hash the password using bcrypt
@@ -24,7 +30,7 @@ const registerUserAndCreateCart = async (request, response, next) => {
   try {
     // Insert the user into the database and return the newly inserted user
     const result = await db.query(
-      "INSERT INTO users (email, password, firstName, lastName) VALUES (LOWER($1), $2, $3, $4) RETURNING *",
+      "INSERT INTO users (email, password, firstname, lastname) VALUES (LOWER($1), $2, $3, $4) RETURNING *",
       [email, hashedPassword, firstname, lastname]
     );
 

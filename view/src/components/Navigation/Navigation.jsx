@@ -1,8 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navigation.module.css';
 
@@ -27,9 +25,9 @@ export const Navigation = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link><Link className={styles.navLink}>Contact</Link></Nav.Link>
-            <Nav.Link><Link className={styles.navLink}>Sign In</Link></Nav.Link>
-            <Nav.Link><Link className={styles.navLink}>About</Link></Nav.Link>
+            <Nav.Link className={styles.navLink}>Contact</Nav.Link>
+            <Nav.Link className={styles.navLink}>Sign In</Nav.Link>
+            <Nav.Link className={styles.navLink}>About</Nav.Link>
             <Nav.Link><img title="Cart" src="src\assets\luggage-cart-solid-svgrepo-com.svg" className={styles.cartIcon} alt='Cart' /></Nav.Link>
           </Nav>
         </Navbar.Collapse>

@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Footer.module.css";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from "react-router-dom";
 
 
 export const Footer = () => {
@@ -13,7 +12,7 @@ export const Footer = () => {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
-              <p>Made with &lt;3 frustration &lt;3</p>
+              Made with &lt;3 frustration &lt;3
             </Navbar.Text>
           </Navbar.Collapse>
         </Container>
