@@ -16,9 +16,8 @@ export const Registration = () => {
       email: data.get("email"),
       password: data.get("password"),
     };
-    console.log(user);
     const response = await addUser(user);
-    console.log(response);
+    alert(response.message);
     event.target.reset();
   };
 
