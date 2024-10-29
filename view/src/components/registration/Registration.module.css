@@ -1,11 +1,19 @@
+
 .registrationForm {
   display: flex;
   flex-direction: column;
-  align-items: center !important;
-  margin-top: 50px;
+  align-items: center;
   justify-content: center;
 }
-
 .registrationForm h2 {
   color: white;
+  margin-bottom: 1rem;
+}
+
+.registrationSubmit {
+  margin-top: 1rem;
+}
+
+@media only screen and (max-width: 576px) {
+
 }
