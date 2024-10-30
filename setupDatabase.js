@@ -8,7 +8,9 @@ const { DB } = require("./config");
       email           VARCHAR(50)      NOT NULL,      
       password        TEXT             NOT NULL,
       firstName       VARCHAR(50)      NOT NULL,
-      lastName        VARCHAR(50)      NOT NULL
+      lastName        VARCHAR(50)      NOT NULL,
+      google_id       VARCHAR(100),
+      google_profile  JSON
     );
   `;
 
