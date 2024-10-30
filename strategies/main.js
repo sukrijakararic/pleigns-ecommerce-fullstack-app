@@ -20,18 +20,6 @@ passport.serializeUser((user, done) => {
     }
   });
 
-  /** passport.deserializeUser(async (id, done) => {
-  console.log('deserializeUser called with id:', id);
-  try {
-    const user = await getUserById(id);
-    if (!user) {
-      return done(null, false);
-    }
-    done(null, user);
-  } catch (err) {
-    done(err, null);
-  }
-}); **/
 
 googleStrategy(passport);
 localStrategy(passport);

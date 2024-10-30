@@ -1,7 +1,14 @@
 const express = require("express");
 const userRouter = express.Router();
-const { registerUserAndCreateCart, showUsers, changePAssword, deleteUserById , getUserByIdForRouter } = require("../queries/user");
+const {
+  registerUserAndCreateCart,
+  showUsers,
+  changePAssword,
+  deleteUserById,
+  getUserByIdForRouter,
+} = require("../queries/user");
 const passport = require("../strategies/main");
+
 
 module.exports = (app) => {
   app.get("/failedLogIn", (req, res) => {
@@ -11,7 +18,7 @@ module.exports = (app) => {
 
   userRouter.get("/", showUsers);
 
-  userRouter.get("/:id", getUserByIdForRouter); 
+  userRouter.get("/:id", getUserByIdForRouter);
 
   userRouter.post("/register", registerUserAndCreateCart);
 
@@ -23,21 +30,21 @@ module.exports = (app) => {
     }
   );
 
-  app.get('/google',
-    passport.authenticate('google', {
-            scope:
-                ['email', 'profile']
-        }
-    ));
+  app.get(
+    "/google",
+    passport.authenticate("google", {
+      scope: ["email", "profile"],
+    })
+  );
 
-    app.get('/google/callback',
-      passport.authenticate('google', {
-          failureRedirect: '/failedLogin',
-      }),
-      function (req, res) {
-        res.send({ message: "Logged in", user: req.user });
-  
-      }
+  app.get(
+    "/google/callback",
+    passport.authenticate("google", {
+      failureRedirect: "/failedLogin",
+    }),
+    function (req, res) {
+      res.send({ message: "Logged in", user: req.user });
+    }
   );
 
   userRouter.put("/changePassword", changePAssword);
