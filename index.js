@@ -11,6 +11,8 @@ const userRouter = require("./routes/user");
 const productsRouter = require("./routes/products");
 const cartRouter = require("./routes/cart");
 const orderRouter = require("./routes/order");
+const googleRouter = require("./routes/googleRouter");
+
 
 // secuirty
 app.use(cors());
@@ -24,7 +26,7 @@ app.use(
       maxAge: 3600000, // 1 hour
       httpOnly: true,
       secure: false, // set to true if you're using HTTPS
-     
+      keys: ["key1", "key2"],
     }
   })
 );
@@ -40,6 +42,7 @@ userRouter(app);
 productsRouter(app);
 cartRouter(app);
 orderRouter(app);
+googleRouter(app);
 
 app.get("/", (req, res, next) => {
   res.json({

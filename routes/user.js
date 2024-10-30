@@ -30,23 +30,6 @@ module.exports = (app) => {
     }
   );
 
-  app.get(
-    "/google",
-    passport.authenticate("google", {
-      scope: ["email", "profile"],
-    })
-  );
-
-  app.get(
-    "/google/callback",
-    passport.authenticate("google", {
-      failureRedirect: "/failedLogin",
-    }),
-    function (req, res) {
-      res.send({ message: "Logged in", user: req.user });
-    }
-  );
-
   userRouter.put("/changePassword", changePAssword);
 
   userRouter.delete("/:id", deleteUserById);
