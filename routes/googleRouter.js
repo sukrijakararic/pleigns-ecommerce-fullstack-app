@@ -1,6 +1,7 @@
 // Google authentication
 const passport = require("../strategies/main");
 const db = require("../db/pool");
+const { REDIRECTURL } = process.env;
 
 module.exports = (app) => {
   app.get(
@@ -22,7 +23,7 @@ module.exports = (app) => {
           [req.user.sub]
         );
         if (result.rows.length > 0) {
-          return res.status(200).redirect("http://localhost:5173/profile");
+          return res.status(200).redirect(REDIRECTURL);
         }
 
         await db.query(
@@ -30,8 +31,7 @@ module.exports = (app) => {
           [req.user]
         );
 
-        res.status(200).redirect("http://localhost:5173/profile");
-
+        res.status(200).redirect(REDIRECTURL);
       } catch (err) {
         console.log(err);
         res.status(500).json({ message: "Error logging in" });
