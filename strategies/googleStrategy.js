@@ -11,7 +11,7 @@ module.exports = function (passport) {
         passReqToCallback: true,
       },
       function (request, accessToken, refreshToken, profile, done) {
-        return done(null, profile);
+        return done(null, profile._json);
       }
     )
   );
