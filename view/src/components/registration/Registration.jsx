@@ -3,7 +3,7 @@ import styles from "./Registration.module.css";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { addUser } from "../../utils/utils";
+import { addUser} from "../../utils/utils";
 
 export const Registration = () => {
   const handleSubmit = async (event) => {
@@ -19,6 +19,10 @@ export const Registration = () => {
     event.target.reset();
     document.getElementById("responseStatus").textContent = response.message;
 
+  };
+
+  const handleGoogleOauth = async () => {
+    window.location.href = 'http://localhost:4000/google';
   };
 
   return (
@@ -61,6 +65,13 @@ export const Registration = () => {
           Submit
         </Button>{" "}
         <p className={styles.responseStatus} id="responseStatus"></p>
+
+        <p className={styles.oathRegister}>Or register with</p>
+        <Button variant="light" onClick={handleGoogleOauth}><img className={styles.oauthIcons} src="\src\assets\google_icon.webp" alt="Icon of Google" /></Button>{' '}
+
+        <p className={styles.oathRegister}>
+          Already have an account? <a href="/login">Login</a>
+        </p>
       </form>{" "}
     </div>
   );

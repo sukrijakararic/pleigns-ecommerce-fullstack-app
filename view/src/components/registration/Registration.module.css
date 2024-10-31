@@ -13,6 +13,15 @@
   margin-top: 1rem;
 }
 
+.oathRegister {
+  color: white;
+  margin: 0;
+}
+.oauthIcons {
+  height: 2rem;
+  width: 2rem;
+}
+
 .responseStatus {
   color: green;
   font-weight: bold;

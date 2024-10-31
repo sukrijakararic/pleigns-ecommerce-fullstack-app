@@ -1,4 +1,4 @@
-const express = require("express");
+// Google authentication
 const passport = require("../strategies/main");
 const db = require("../db/pool");
 
@@ -22,8 +22,8 @@ module.exports = (app) => {
           [req.user]
         );
 
-        res.json({ message: "Logged in", user: req.user });
-        
+        res.redirect("/");
+
       } catch (err) {
         console.log(err);
         res.status(500).json({ message: "Error logging in" });
