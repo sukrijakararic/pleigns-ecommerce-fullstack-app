@@ -15,3 +15,19 @@ export const addUser = async (user) => {
       throw error;
     }
   };
+
+  export const logout = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/users/logout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error logging out:', error);
+      throw error;
+    }
+  };

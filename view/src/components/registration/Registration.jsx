@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext} from "react";
+import {AuthContext} from "../../utils/AuthContext";
 import styles from "./Registration.module.css";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
@@ -6,6 +7,8 @@ import Button from "react-bootstrap/Button";
 import { addUser} from "../../utils/utils";
 
 export const Registration = () => {
+
+  const { loggedIn, setLoggedIn } = useContext(AuthContext);
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
@@ -18,11 +21,12 @@ export const Registration = () => {
     const response = await addUser(user);
     event.target.reset();
     document.getElementById("responseStatus").textContent = response.message;
-
+    response.message === "User created" && setLoggedIn(true);
   };
 
   const handleGoogleOauth = async () => {
     window.location.href = 'http://localhost:4000/google';
+    setLoggedIn(true);
   };
 
   return (

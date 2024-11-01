@@ -1,4 +1,5 @@
 import "./App.css";
+import { AuthProvider } from "./utils/AuthContext";
 import {
   RouterProvider,
   createBrowserRouter,
@@ -26,7 +27,9 @@ const appRouter = createBrowserRouter(
 function App() {
   return (
     <main className="App">
+      <AuthProvider>
       <RouterProvider router={appRouter} />
+      </AuthProvider>
     </main>
   );
 }
