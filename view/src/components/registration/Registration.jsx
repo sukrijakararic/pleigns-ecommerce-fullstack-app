@@ -1,13 +1,13 @@
-import React, {useContext} from "react";
-import {AuthContext} from "../../utils/AuthContext";
+import React, { useContext } from "react";
+import { AuthContext } from "../../utils/AuthContext";
 import styles from "./Registration.module.css";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { addUser} from "../../utils/utils";
+import { addUser } from "../../utils/utils";
+import { Link } from "react-router-dom";
 
 export const Registration = () => {
-
   const { loggedIn, setLoggedIn } = useContext(AuthContext);
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -25,56 +25,56 @@ export const Registration = () => {
   };
 
   const handleGoogleOauth = async () => {
-    window.location.href = 'http://localhost:4000/google';
+    window.location.href = "http://localhost:4000/google";
     setLoggedIn(true);
   };
 
   return (
-      <form className={styles.registrationForm} onSubmit={handleSubmit}>
-        <h2>Register</h2>
-        <FloatingLabel
-          controlId="floatingInput1"
-          label="Email address"
-          className="mb-3"
-        >
-          <Form.Control type="email" placeholder="" name="email" />
-        </FloatingLabel>
-        <FloatingLabel
-          controlId="floatingInput2"
-          label="First name"
-          className="mb-3"
-        >
-          <Form.Control type="text" placeholder="" name="firstname" />
-        </FloatingLabel>
-        <FloatingLabel
-          controlId="floatingInput3"
-          label="Last Name"
-          className="mb-3"
-        >
-          <Form.Control type="text" placeholder="" name="lastname" />
-        </FloatingLabel>
-        <FloatingLabel controlId="floatingPassword" label="Password">
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            name="password"
-          />
-        </FloatingLabel>
-        <Button
-          variant="success"
-          type="submit"
-          className={styles.registrationSubmit}
-        >
-          Submit
-        </Button>{" "}
-        <p className={styles.responseStatus} id="responseStatus"></p>
-
-        <p className={styles.oathRegister}>Or register with</p>
-        <Button variant="light" onClick={handleGoogleOauth}><img className={styles.oauthIcons} src="\src\assets\google_icon.webp" alt="Icon of Google" /></Button>{' '}
-
-        <p className={styles.oathRegister}>
-          Already have an account? <a href="/login">Login</a>
-        </p>
-      </form>
+    <form className={styles.registrationForm} onSubmit={handleSubmit}>
+      <h2>Register</h2>
+      <FloatingLabel
+        controlId="floatingInput1"
+        label="Email address"
+        className="mb-3"
+      >
+        <Form.Control type="email" placeholder="" name="email" />
+      </FloatingLabel>
+      <FloatingLabel
+        controlId="floatingInput2"
+        label="First name"
+        className="mb-3"
+      >
+        <Form.Control type="text" placeholder="" name="firstname" />
+      </FloatingLabel>
+      <FloatingLabel
+        controlId="floatingInput3"
+        label="Last Name"
+        className="mb-3"
+      >
+        <Form.Control type="text" placeholder="" name="lastname" />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingPassword" label="Password">
+        <Form.Control type="password" placeholder="Password" name="password" />
+      </FloatingLabel>
+      <Button
+        variant="success"
+        type="submit"
+        className={styles.registrationSubmit}
+      >
+        Submit
+      </Button>{" "}
+      <p className={styles.responseStatus} id="responseStatus"></p>
+      <p className={styles.oathRegister}>Or register with</p>
+      <Button variant="light" onClick={handleGoogleOauth}>
+        <img
+          className={styles.oauthIcons}
+          src="\src\assets\google_icon.webp"
+          alt="Icon of Google"
+        />
+      </Button>{" "}
+      <p className={styles.oathRegister}>
+        Already have an account? <Link to="/login">Login</Link>
+      </p>
+    </form>
   );
 };
