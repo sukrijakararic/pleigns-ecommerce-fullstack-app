@@ -1,5 +1,6 @@
 import "./App.css";
 import { AuthProvider } from "./utils/AuthContext";
+import { RequireAuth } from "./utils/RequireAuth";
 import {
   RouterProvider,
   createBrowserRouter,
@@ -19,7 +20,14 @@ const appRouter = createBrowserRouter(
     <Route path="/" element={<Root />}>
       <Route index element={<LandingPage />} />
       <Route path="about" element={<AboutUs />} />
-      <Route path="profile" element={<Profile />} />
+      <Route
+        path="profile"
+        element={
+          <RequireAuth>
+            <Profile />
+          </RequireAuth>
+        }
+      />
     </Route>
   )
 );
@@ -28,7 +36,7 @@ function App() {
   return (
     <main className="App">
       <AuthProvider>
-      <RouterProvider router={appRouter} />
+        <RouterProvider router={appRouter} />
       </AuthProvider>
     </main>
   );
