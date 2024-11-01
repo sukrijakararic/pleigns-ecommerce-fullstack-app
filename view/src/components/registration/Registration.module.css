@@ -22,10 +22,19 @@
   width: 2rem;
 }
 
+.loginLink {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.loginLink:hover {
+  text-decoration: underline;
+}
+
 .responseStatus {
   color: green;
   font-weight: bold;
-  background-color: white;
   border-radius: .5rem;
   padding: 0.5rem;
   margin-top: .5rem;

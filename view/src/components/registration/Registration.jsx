@@ -73,7 +73,7 @@ export const Registration = () => {
         />
       </Button>{" "}
       <p className={styles.oathRegister}>
-        Already have an account? <Link to="/login">Login</Link>
+        Already have an account? <Link to="/login" className={styles.loginLink}>Login</Link>
       </p>
     </form>
   );
