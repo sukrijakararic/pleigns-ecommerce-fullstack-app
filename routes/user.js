@@ -40,7 +40,7 @@ module.exports = (app) => {
         console.error(err); // log the error
         res.status(500).send("Error logging out"); // return an error response
       } else {
-        res.redirect("/");
+        res.status(200).json({ message: "Logged out" });
       }
     });
   });

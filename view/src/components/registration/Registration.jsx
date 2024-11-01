@@ -30,7 +30,6 @@ export const Registration = () => {
   };
 
   return (
-    <div>
       <form className={styles.registrationForm} onSubmit={handleSubmit}>
         <h2>Register</h2>
         <FloatingLabel
@@ -76,7 +75,6 @@ export const Registration = () => {
         <p className={styles.oathRegister}>
           Already have an account? <a href="/login">Login</a>
         </p>
-      </form>{" "}
-    </div>
+      </form>
   );
 };

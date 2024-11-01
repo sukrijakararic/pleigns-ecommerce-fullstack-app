@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 export const Footer = () => {
   return (
-      <Navbar className="bg-body-tertiary" >
+      <Navbar className="bg-body-tertiary" fixed="bottom" >
         <Container>
           <Navbar.Brand>Pleigns</Navbar.Brand>
           <Navbar.Toggle />

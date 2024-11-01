@@ -14,12 +14,14 @@ import { Root } from "./components/Root/Root";
 import { LandingPage } from "./components/LandingPage/LandingPage";
 import { AboutUs } from "./components/aboutUs/AboutUs";
 import { Profile } from "./components/profile/Profile";
+import {Login} from "./components/login/Login"
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route index element={<LandingPage />} />
       <Route path="about" element={<AboutUs />} />
+      <Route path="login" element={<Login />} />
       <Route
         path="profile"
         element={
