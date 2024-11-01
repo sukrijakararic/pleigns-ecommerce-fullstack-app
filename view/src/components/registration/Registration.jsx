@@ -7,8 +7,10 @@ import Button from "react-bootstrap/Button";
 import { addUser } from "../../utils/utils";
 import { Link } from "react-router-dom";
 
+import { REDIRECTURL } from "../../utils/utils";
+
 export const Registration = () => {
-  const { loggedIn, setLoggedIn } = useContext(AuthContext);
+  const { setLoggedIn } = useContext(AuthContext);
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
@@ -25,7 +27,7 @@ export const Registration = () => {
   };
 
   const handleGoogleOauth = async () => {
-    window.location.href = "http://localhost:4000/google";
+    window.location.href = REDIRECTURL;
     setLoggedIn(true);
   };
 

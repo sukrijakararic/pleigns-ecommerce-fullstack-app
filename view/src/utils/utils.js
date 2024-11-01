@@ -1,3 +1,5 @@
+export const REDIRECTURL ='http://localhost:5173/profile';
+
 export const addUser = async (user) => {
   try {
     const response = await fetch("http://localhost:4000/users/register", {

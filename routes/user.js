@@ -1,5 +1,6 @@
 const express = require("express");
 const userRouter = express.Router();
+const { REDIRECTURL } = process.env;
 const {
   registerUserAndCreateCart,
   showUsers,
@@ -26,7 +27,7 @@ module.exports = (app) => {
     "/login",
     passport.authenticate("local", { failureRedirect: "/failedLogIn" }),
     (req, res) => {
-      res.send({ message: "Logged in", user: req.user });
+      res.json({ message: "Logged in" });
     }
   );
 
