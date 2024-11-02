@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import { AuthContext } from "../../utils/AuthContext";
 import { useContext } from "react";
 import { REDIRECTURL } from "../../utils/utils";
+import { Link } from "react-router-dom";
 
 import { login } from "../../utils/utils";
 
@@ -26,7 +27,8 @@ const handleLogin = async (event) => {
   window.location.href = REDIRECTURL;
 };
   return (
-    <form onSubmit={handleLogin}>
+    <div className={styles.loginContainer}>
+    <form onSubmit={handleLogin} className={styles.loginForm}>
       <FloatingLabel
         controlId="floatingInput"
         label="Email address"
@@ -41,6 +43,11 @@ const handleLogin = async (event) => {
       <Button variant="success" type="submit">
         Submit
       </Button>
+      <p>Or log in with</p>
+      <p>
+        Don't have an account? <Link to="/">Register</Link>
+      </p>
     </form>
+    </div>
   );
 };
