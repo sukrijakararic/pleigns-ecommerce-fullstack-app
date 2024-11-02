@@ -16,3 +16,14 @@
     background-color: #fff;
     width: 50%;
 }
+
+.registerLink {
+    margin-top: 10px;
+    text-align: center;
+}
+
+@media only screen and (max-width: 590px) {
+    .loginForm {
+        width: 80%;
+    }
+}

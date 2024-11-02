@@ -6,8 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { addUser } from "../../utils/utils";
 import { Link } from "react-router-dom";
-
-import { REDIRECTURL } from "../../utils/utils";
+import { GoogleOauth } from "../googleOauth/GoogleOauth";
 
 export const Registration = () => {
   const { setLoggedIn } = useContext(AuthContext);
@@ -24,11 +23,6 @@ export const Registration = () => {
     event.target.reset();
     document.getElementById("responseStatus").textContent = response.message;
     response.message === "User created" && setLoggedIn(true);
-  };
-
-  const handleGoogleOauth = async () => {
-    window.location.href = REDIRECTURL;
-    setLoggedIn(true);
   };
 
   return (
@@ -67,13 +61,7 @@ export const Registration = () => {
       </Button>{" "}
       <p className={styles.responseStatus} id="responseStatus"></p>
       <p className={styles.oathRegister}>Or register with</p>
-      <Button variant="light" onClick={handleGoogleOauth}>
-        <img
-          className={styles.oauthIcons}
-          src="\src\assets\google_icon.webp"
-          alt="Icon of Google"
-        />
-      </Button>{" "}
+      <GoogleOauth />
       <p className={styles.oathRegister}>
         Already have an account? <Link to="/login" className={styles.loginLink}>Login</Link>
       </p>

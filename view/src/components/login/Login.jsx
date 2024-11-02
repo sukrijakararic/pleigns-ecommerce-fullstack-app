@@ -9,6 +9,7 @@ import { REDIRECTURL } from "../../utils/utils";
 import { Link } from "react-router-dom";
 
 import { login } from "../../utils/utils";
+import { GoogleOauth } from "../googleOauth/GoogleOauth";
 
 export const Login = () => {
   const { setLoggedIn } = useContext(AuthContext);
@@ -29,6 +30,7 @@ const handleLogin = async (event) => {
   return (
     <div className={styles.loginContainer}>
     <form onSubmit={handleLogin} className={styles.loginForm}>
+      <h2 className={styles.loginTitle}>Login</h2>
       <FloatingLabel
         controlId="floatingInput"
         label="Email address"
@@ -44,8 +46,9 @@ const handleLogin = async (event) => {
         Submit
       </Button>
       <p>Or log in with</p>
+      <GoogleOauth />
       <p>
-        Don't have an account? <Link to="/">Register</Link>
+        Don't have an account? <Link to="/" className={styles.registerLink}>Register</Link>
       </p>
     </form>
     </div>
