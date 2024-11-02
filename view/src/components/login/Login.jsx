@@ -5,14 +5,14 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Button from "react-bootstrap/Button";
 import { AuthContext } from "../../utils/AuthContext";
 import { useContext } from "react";
-import { REDIRECTURL } from "../../utils/utils";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { login } from "../../utils/utils";
 import { GoogleOauth } from "../googleOauth/GoogleOauth";
 
 export const Login = () => {
   const { setLoggedIn } = useContext(AuthContext);
+  const Navigate = useNavigate();
 
 const handleLogin = async (event) => {
   event.preventDefault();
@@ -25,7 +25,7 @@ const handleLogin = async (event) => {
   event.target.reset();
   document.getElementById("responseStatus").textContent = response.message;
   response.message.includes("Logged in") && setLoggedIn(true);
-  window.location.href = REDIRECTURL;
+  response.message.includes("Logged in") && Navigate("/profile");
 };
   return (
     <div className={styles.loginContainer}>

@@ -1,4 +1,4 @@
-export const REDIRECTURL ='http://localhost:5173/profile';
+
 
 export const addUser = async (user) => {
   try {

@@ -5,11 +5,14 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { addUser } from "../../utils/utils";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GoogleOauth } from "../googleOauth/GoogleOauth";
 
 export const Registration = () => {
+  const Navigate = useNavigate();
+
   const { setLoggedIn } = useContext(AuthContext);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
@@ -22,7 +25,10 @@ export const Registration = () => {
     const response = await addUser(user);
     event.target.reset();
     document.getElementById("responseStatus").textContent = response.message;
-    response.message === "User created" && setLoggedIn(true);
+    if (response.message === "User created") {
+      setLoggedIn(true);
+      Navigate("/profile");
+    }
   };
 
   return (
@@ -63,7 +69,10 @@ export const Registration = () => {
       <p className={styles.oathRegister}>Or register with</p>
       <GoogleOauth />
       <p className={styles.oathRegister}>
-        Already have an account? <Link to="/login" className={styles.loginLink}>Login</Link>
+        Already have an account?{" "}
+        <Link to="/login" className={styles.loginLink}>
+          Login
+        </Link>
       </p>
     </form>
   );
