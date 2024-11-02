@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 import { AuthContext } from "../../utils/AuthContext";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import { login } from "../../utils/utils";
 import { GoogleOauth } from "../googleOauth/GoogleOauth";
 
@@ -24,8 +23,10 @@ const handleLogin = async (event) => {
   const response = await login(user);
   event.target.reset();
   document.getElementById("responseStatus").textContent = response.message;
-  response.message.includes("Logged in") && setLoggedIn(true);
-  response.message.includes("Logged in") && Navigate("/profile");
+  if (response.message === "Logged in") {
+    setLoggedIn(true);
+    Navigate("/profile");
+  }
 };
   return (
     <div className={styles.loginContainer}>
