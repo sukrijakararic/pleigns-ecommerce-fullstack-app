@@ -8,8 +8,8 @@ googleStrategy(passport);
 localStrategy(passport);
 // Serialize user for session
 passport.serializeUser((user, done) => {
-  console.log('Serialize user called with user:', user);
-  done(null, user);
+  console.log('Serialize user called with user:', user.id);
+  done(null, user).id;
 });
 
 // Deserialize user from session
