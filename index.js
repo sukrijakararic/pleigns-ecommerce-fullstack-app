@@ -4,7 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const { PORT, SESSION_SECRET } = require("./config");
-const passport = require("passport");
+const passport = require("./strategies/main");
 const session = require("express-session");
 
 const userRouter = require("./routes/user");
@@ -26,14 +26,16 @@ app.use(
       maxAge: 3600000, // 1 hour
       httpOnly: true,
       secure: false, // set to true if you're using HTTPS
-      keys: ["key1", "key2"],
     }
   })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use((req, res, next) => {
+  console.log('req.session.passport:', req.session.passport);
+  next();
+});
 //body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -19,7 +19,6 @@ module.exports = (app) => {
   userRouter.get("/", showUsers);
 
   userRouter.get("/profile", (req, res) => {
-    console.log('Req.session:', req.session);
     console.log('Req.user:', req.user);
     if (req.user) {
       res.json(req.user);
@@ -37,6 +36,7 @@ module.exports = (app) => {
     "/login",
     passport.authenticate("local", { failureRedirect: "/failedLogIn" }),
     (req, res) => {
+      console.log("sessioon upon logging in:", req.session.passport);
       res.json({ message: "Logged in" });
     }
   );
