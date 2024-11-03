@@ -1,6 +1,5 @@
 const express = require("express");
 const userRouter = express.Router();
-const { REDIRECTURL } = process.env;
 const {
   registerUserAndCreateCart,
   showUsers,
@@ -19,7 +18,18 @@ module.exports = (app) => {
 
   userRouter.get("/", showUsers);
 
+  userRouter.get("/profile", (req, res) => {
+    console.log('Req.session:', req.session);
+    console.log('Req.user:', req.user);
+    if (req.user) {
+      res.json(req.user);
+    } else {
+      res.status(401).json({ message: "Unauthorized" });
+    }
+  });
+
   userRouter.get("/:id", getUserByIdForRouter);
+
 
   userRouter.post("/register", registerUserAndCreateCart);
 
