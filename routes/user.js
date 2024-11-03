@@ -36,7 +36,7 @@ module.exports = (app) => {
     "/login",
     passport.authenticate("local", { failureRedirect: "/failedLogIn" }),
     (req, res) => {
-      console.log("sessioon upon logging in:", req.session.passport);
+      console.log("req.session.passport:", req.session.passport);
       res.json({ message: "Logged in" });
     }
   );
