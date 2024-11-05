@@ -9,7 +9,6 @@ const {
 } = require("../queries/user");
 const passport = require("../strategies/main");
 
-
 module.exports = (app) => {
   app.get("/failedLogIn", (req, res) => {
     res.json({ message: "Incorrect email or password" });
@@ -19,18 +18,17 @@ module.exports = (app) => {
   userRouter.get("/", showUsers);
 
   userRouter.get("/profile", (req, res) => {
-     console.log('Req.user:', req.user);
+    console.log("Req.user:", req.user);
     if (req.user) {
       console.log("req.user", req.user);
-      res.json(req.user);
+      res.status(200).json({ message: "Success", user: req.user });
     } else {
-       console.log("Unauthorized");
+      console.log("Unauthorized");
       res.status(401).json({ message: "Unauthorized" });
     }
   });
 
   userRouter.get("/:id", getUserByIdForRouter);
-
 
   userRouter.post("/register", registerUserAndCreateCart);
 
