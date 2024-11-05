@@ -12,12 +12,12 @@ module.exports = function (passport) {
       },
       async (email, password, done) => {
         try {
-          const user = await getUserByEmail(email);
+          const user = await getUserByEmail(email); // returns entire user object from database (id, email, password, etc.)
           if (!user) {
             return done(null, false);
           }
 
-          const passwordsMatch = await bcrypt.compare(password, user.password);
+          const passwordsMatch = await bcrypt.compare(password, user.password); // checks if password provided by user matches password in database
           if (!passwordsMatch) {
             return done(null, false);
           }
