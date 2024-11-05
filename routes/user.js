@@ -19,8 +19,9 @@ module.exports = (app) => {
   userRouter.get("/", showUsers);
 
   userRouter.get("/profile", (req, res) => {
-    console.log('Req.user:', req.user);
+     console.log('Req.user:', req.user);
     if (req.user) {
+      console.log("req.user", req.user);
       res.json(req.user);
     } else {
        console.log("Unauthorized");
