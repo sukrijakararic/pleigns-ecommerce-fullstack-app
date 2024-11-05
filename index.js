@@ -32,10 +32,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use((req, res, next) => {
-  console.log('req.session.passport:', req.session.passport);
-  next();
-});
+
 //body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,12 +42,6 @@ productsRouter(app);
 cartRouter(app);
 orderRouter(app);
 googleRouter(app);
-
-app.get("/", (req, res, next) => {
-  res.json({
-    message: "Hello World"
-  })
-})
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

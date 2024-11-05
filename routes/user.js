@@ -23,6 +23,7 @@ module.exports = (app) => {
     if (req.user) {
       res.json(req.user);
     } else {
+       console.log("Unauthorized");
       res.status(401).json({ message: "Unauthorized" });
     }
   });

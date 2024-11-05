@@ -4,8 +4,6 @@ const localStrategy = require("./local");
 const googleStrategy = require("./googleStrategy");
 
 
-googleStrategy(passport);
-localStrategy(passport);
 // Serialize user for session
 passport.serializeUser((user, done) => {
   console.log('Serialize user called with user:', user.id);
@@ -25,6 +23,8 @@ passport.deserializeUser(async (id, done) => {
     done(err, null);
   }
 });
+googleStrategy(passport);
+localStrategy(passport);
 
 /** passport.deserializeUser((user, done) => {
   try {
