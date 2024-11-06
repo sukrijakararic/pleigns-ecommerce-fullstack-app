@@ -31,7 +31,7 @@ module.exports = (app) => {
           [req.user]
         );
 
-        res.status(200).redirect(REDIRECTURL);
+        res.status(200).json({ message: "Logged in", user: req.user });
       } catch (err) {
         console.log(err);
         res.status(500).json({ message: "Error logging in" });

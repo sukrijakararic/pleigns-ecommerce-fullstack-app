@@ -17,17 +17,6 @@ export const addUser = async (user) => {
   }
 };
 
-export const getUser = async () => {
-  try {
-    const response = await fetch(`http://localhost:4000/users/profile`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error getting user:", error);
-    throw error;
-  }
-}
-
 export const login = async (user) => {
   try {
     const response = await fetch("http://localhost:4000/users/login", {
