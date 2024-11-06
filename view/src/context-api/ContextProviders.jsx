@@ -1,10 +1,13 @@
-import React from 'react'
-import { AuthProvider } from './AuthContext'
+import React from "react";
+import { AuthProvider } from "./AuthContext";
+import { UserProvider } from "./UserContext";
 
 export const ContextProviders = ({ children }) => {
   return (
     <div>
-      <AuthProvider>{children}</AuthProvider>
+      <AuthProvider>
+        <UserProvider>{children}</UserProvider>
+      </AuthProvider>
     </div>
-  )
-}
+  );
+};

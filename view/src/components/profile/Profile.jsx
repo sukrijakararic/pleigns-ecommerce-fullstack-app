@@ -1,33 +1,27 @@
-import React, { useEffect, useState} from "react";
+import React, { useContext} from "react";
 import styles from "./Profile.module.css";
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
-import { getUser } from "../../utils/utils";
+import { UserContext } from "../../context-api/UserContext";
 
 export const Profile = () => {
+  const { loggedUser } = useContext(UserContext);
 
-  const [user, setUser] = useState({});
-
-  const fetchUser = async () => {
-    const data = await getUser();
-    setUser(data);
-    console.log(data);
-  };
-
-  useEffect(() => {
-    fetchUser();
-  }, []);
 
   return (
     <div className={styles.profileCard}>
-    <Card style={{ width: '18rem' }} className={styles.profile}>
-    <Card.Header>Pilot</Card.Header>
-    <ListGroup variant="flush">
-      <ListGroup.Item>{user.message}</ListGroup.Item>
-      <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-      <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-    </ListGroup>
-  </Card>
-  </div>
-  )
+      {loggedUser ? (
+        <Card style={{ width: '18rem' }} className={styles.profile}>
+          <Card.Header>Pilot</Card.Header>
+          <ListGroup variant="flush">
+            <ListGroup.Item>{loggedUser.email}</ListGroup.Item>
+            <ListGroup.Item>{loggedUser.firstname}</ListGroup.Item>
+            <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+          </ListGroup>
+        </Card>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
 };

@@ -1,23 +1,15 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState } from 'react'
 
 export const UserContext = createContext()
 export const UserProvider = ({ children }) => {
 
-    const [user, setUser] = useState({});
+    const [loggedUser, setLoggedUser] = useState({});   
 
-    const fetchUser = async () => {
-        const data = await getUser();
-        setUser(data);
-        console.log(data);
-      };
-
-    useEffect(() => {
-        fetchUser();
-    })    
+    console.log('Logged user:', loggedUser);
 
   return (
     <div>
-        <UserContext.Provider value={{user, setUser}}>
+        <UserContext.Provider value={{loggedUser, setLoggedUser}}>
             {children}
         </UserContext.Provider>
     </div>

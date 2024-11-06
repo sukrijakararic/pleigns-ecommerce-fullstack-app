@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import styles from "./Login.module.css";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Button from "react-bootstrap/Button";
 import { AuthContext } from "../../context-api/AuthContext";
-import { useContext } from "react";
+import { UserContext } from "../../context-api/UserContext";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../utils/utils";
 import { GoogleOauth } from "../googleOauth/GoogleOauth";
 
 export const Login = () => {
   const { setLoggedIn } = useContext(AuthContext);
+  const { setLoggedUser} = useContext(UserContext);
   const Navigate = useNavigate();
 
 const handleLogin = async (event) => {
@@ -25,9 +26,11 @@ const handleLogin = async (event) => {
   document.getElementById("responseStatus").textContent = response.message;
   if (response.message === "Logged in") {
     setLoggedIn(true);
+    setLoggedUser(response.user);
     Navigate("/profile");
   }
 };
+
   return (
     <div className={styles.loginContainer}>
     <form onSubmit={handleLogin} className={styles.loginForm}>

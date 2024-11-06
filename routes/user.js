@@ -17,17 +17,6 @@ module.exports = (app) => {
 
   userRouter.get("/", showUsers);
 
-  userRouter.get("/profile", (req, res) => {
-    console.log("Req.user:", req.user);
-    if (req.user) {
-      console.log("req.user", req.user);
-      res.status(200).json({ message: "Success", user: req.user });
-    } else {
-      console.log("Unauthorized");
-      res.status(401).json({ message: "Unauthorized" });
-    }
-  });
-
   userRouter.get("/:id", getUserByIdForRouter);
 
   userRouter.post("/register", registerUserAndCreateCart);
@@ -36,7 +25,8 @@ module.exports = (app) => {
     "/login",
     passport.authenticate("local", { failureRedirect: "/failedLogIn"}),
     (req, res) => {
-      console.log("req.session.passport:", req.session.passport);
+      // console.log("req.session.passport:", req.session.passport);
+      // console.log("req.user:", req.user);
       res.json({ message: "Logged in", user: req.user });
     }
   );
