@@ -1,4 +1,4 @@
-
+export const serverUrlGoogle = "http://localhost:4000/google";
 
 export const addUser = async (user) => {
   try {

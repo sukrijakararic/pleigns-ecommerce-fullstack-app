@@ -6,13 +6,17 @@ const googleStrategy = require("./googleStrategy");
 
 // Serialize user for session
 passport.serializeUser((user, done) => {
-  console.log('Serialize user called with user:', user.id);
-  done(null, user.id);
+  console.log('Serialize user called with user:', user);
+  done(null, user);
 });
 
 // Deserialize user from session
+passport.deserializeUser(function (user, done) {
+  console.log('Deserialize user called with user:', user);
+  done(null, user);
+});
 
-passport.deserializeUser(async (id, done) => {
+/** passport.deserializeUser(async (id, done) => {
   console.log('Deserialize user called with id:', id);
   try {
     const user = await getUserById(id);
@@ -22,7 +26,7 @@ passport.deserializeUser(async (id, done) => {
     console.log('Error deserializing user:', err);
     done(err, null);
   }
-});
+}); **/
 googleStrategy(passport);
 localStrategy(passport);
 
@@ -34,9 +38,6 @@ localStrategy(passport);
   }
 }); **/
 
-/**passport.deserializeUser(function (user, done) {
-  done(null, user);
-});**/
 
 
 module.exports = passport;
