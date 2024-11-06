@@ -38,7 +38,7 @@ module.exports = (app) => {
     (req, res) => {
       console.log("req.user:", req.user);
       console.log("req.session.passport:", req.session.passport);
-      res.json({ message: "Logged in" });
+      res.json({ message: "Logged in", user: req.user });
     }
   );
 
