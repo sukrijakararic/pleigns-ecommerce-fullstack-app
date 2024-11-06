@@ -3,7 +3,7 @@ import styles from "./Login.module.css";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Button from "react-bootstrap/Button";
-import { AuthContext } from "../../utils/AuthContext";
+import { AuthContext } from "../../context-api/AuthContext";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../utils/utils";

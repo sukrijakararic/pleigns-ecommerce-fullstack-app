@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../utils/AuthContext";
+import { AuthContext } from "../../context-api/AuthContext";
 import styles from "./Registration.module.css";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";

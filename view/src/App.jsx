@@ -1,5 +1,5 @@
 import "./App.css";
-import { AuthProvider } from "./utils/AuthContext";
+import { ContextProviders } from "./context-api/ContextProviders";
 import { RequireAuth } from "./utils/RequireAuth";
 import {
   RouterProvider,
@@ -37,9 +37,9 @@ const appRouter = createBrowserRouter(
 function App() {
   return (
     <main className="App">
-      <AuthProvider>
+      <ContextProviders>
         <RouterProvider router={appRouter} />
-      </AuthProvider>
+      </ContextProviders>
     </main>
   );
 }

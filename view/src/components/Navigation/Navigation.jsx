@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import styles from "./Navigation.module.css";
-import { AuthContext } from "../../utils/AuthContext";
+import { AuthContext } from "../../context-api/AuthContext";
 import { useContext } from "react";
 
 import { logout } from "../../utils/utils";

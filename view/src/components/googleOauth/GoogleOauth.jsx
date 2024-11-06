@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import styles from "./GoogleOauth.module.css";
-import { AuthContext } from "../../utils/AuthContext";
+import { AuthContext } from "../../context-api/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 export const GoogleOauth = () => {
