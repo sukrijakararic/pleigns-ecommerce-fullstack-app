@@ -14,7 +14,7 @@ import { Root } from "./components/Root/Root";
 import { LandingPage } from "./components/LandingPage/LandingPage";
 import { AboutUs } from "./components/aboutUs/AboutUs";
 import { Profile } from "./components/profile/Profile";
-import {Login} from "./components/login/Login"
+import { Login } from "./components/login/Login";
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(

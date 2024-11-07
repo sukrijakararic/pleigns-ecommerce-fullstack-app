@@ -41,10 +41,13 @@ module.exports = (app) => {
   );
 
   app.get("/getUser", (req, res) => {
+    console.log(req.session);
+    console.log(req.session.passport);
     if (!req.user) {
       res.status(401).json({ message: "Not logged in" });
     } else {
       res.status(200).json({ user: req.user });
     }
-   })
+  })
+  
 };
