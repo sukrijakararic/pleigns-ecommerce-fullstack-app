@@ -16,7 +16,10 @@ const googleRouter = require("./routes/googleRouter");
 
 
 // secuirty
-app.use(cors());
+app.use(cors({
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+  origin: "*",
+}));
 app.use(helmet());
 app.use(
   session({
@@ -27,6 +30,7 @@ app.use(
       maxAge: 3600000, // 1 hour
       httpOnly: true,
       secure: false, // set to true if you're using HTTPS
+      sameSite: "none"
     }
   })
 );
@@ -35,8 +39,8 @@ app.get("/getLocalUser", (req, res) => {
   console.log("req.user:", req.user);
   console.log("req.session.passport:", req.session.passport);
   console.log("req.session:", req.session);
-  if (req.user) {
-    res.json(req.user);
+  if (req.session.passport) {
+    res.json(req.session.passport.user);
   } else {
     res.json({ message: "No user found" });
   }
