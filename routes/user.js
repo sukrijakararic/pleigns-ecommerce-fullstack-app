@@ -17,6 +17,17 @@ module.exports = (app) => {
 
   userRouter.get("/", showUsers);
 
+  userRouter.get("/getLocalUser", (request, response) => {
+    console.log("req.user:", request.user);
+    console.log("req.session.passport:", request.session.passport);
+    console.log("req.session:", request.session);
+    if (request.user) {
+      response.json(request.user);
+    } else {
+      response.status(401).json({ message: "You are not logged in" });
+    }
+  });
+
   userRouter.get("/:id", getUserByIdForRouter);
 
   userRouter.post("/register", registerUserAndCreateCart);
@@ -31,7 +42,6 @@ module.exports = (app) => {
       res.json({ message: "Logged in", user: req.user });
     }
   );
-
   userRouter.put("/changePassword", changePAssword);
 
   userRouter.delete("/:id", deleteUserById);

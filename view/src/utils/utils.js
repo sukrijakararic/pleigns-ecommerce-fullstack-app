@@ -62,8 +62,9 @@ export const getGoogleUser = async () => {
 
  export const getLocalUser = async () => {
   try {
-    const response = await fetch("http://localhost:4000/getLocalUser");
+    const response = await fetch("http://localhost:4000/users/getLocalUser");
     const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.error("Error getting user:", error);
