@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const { PORT, SESSION_SECRET } = require("./config");
 const passport = require("./strategies/main");
 const session = require("express-session");
+const cookieParser = require("cookie-parser");
 
 const userRouter = require("./routes/user");
 const productsRouter = require("./routes/products");
@@ -30,8 +31,22 @@ app.use(
   })
 );
 
+app.get("/getLocalUser", (req, res) => {
+  console.log("req.user:", req.user);
+  console.log("req.session.passport:", req.session.passport);
+  console.log("req.session:", req.session);
+  if (req.user) {
+    res.json(req.user);
+  } else {
+    res.json({ message: "No user found" });
+  }
+});
+
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cookieParser());
+
+
 
 //body parser
 app.use(bodyParser.json());

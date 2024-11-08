@@ -40,7 +40,7 @@ module.exports = (app) => {
     }
   );
 
-  app.get("/getUser", (req, res) => {
+  app.get("/getGoogleUser", (req, res) => {
     console.log(req.session);
     console.log(req.session.passport);
     if (!req.user) {

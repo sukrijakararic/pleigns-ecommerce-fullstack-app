@@ -23,10 +23,11 @@ module.exports = (app) => {
 
   userRouter.post(
     "/login",
-    passport.authenticate("local", { failureRedirect: "/failedLogIn"}),
+    passport.authenticate("local", { failureRedirect: "/failedLogIn" }),
     (req, res) => {
-      // console.log("req.session.passport:", req.session.passport);
-      // console.log("req.user:", req.user);
+      console.log("req.session:", req.session);
+      console.log("req.session.passport:", req.session.passport);
+      console.log("req.user:", req.user);
       res.json({ message: "Logged in", user: req.user });
     }
   );

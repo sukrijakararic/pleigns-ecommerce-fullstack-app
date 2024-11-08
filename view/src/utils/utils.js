@@ -51,7 +51,18 @@ export const logout = async () => {
 
 export const getGoogleUser = async () => {
   try {
-    const response = await fetch("http://localhost:4000/getUser");
+    const response = await fetch("http://localhost:4000/getGoogleUser");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error getting user:", error);
+    throw error;
+  }
+ };
+
+ export const getLocalUser = async () => {
+  try {
+    const response = await fetch("http://localhost:4000/getLocalUser");
     const data = await response.json();
     return data;
   } catch (error) {
