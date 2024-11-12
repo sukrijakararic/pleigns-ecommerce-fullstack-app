@@ -23,7 +23,6 @@ const handleLogin = async (event) => {
   };
   const response = await login(user);
   event.target.reset();
-  console.log(response);
   if (response.message === "Logged in") {
     setLoggedIn(true);
     setLoggedUser(response.user);
