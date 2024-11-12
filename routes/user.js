@@ -9,16 +9,13 @@ const {
 } = require("../queries/user");
 const passport = require("../strategies/main");
 
-userRouter.get("/failedLogIn", (req, res) => {
+userRouter.get("/users/failedLogIn", (req, res) => {
   res.json({ message: "Incorrect email or password" });
 });
 
 userRouter.get("/users/", showUsers);
 
 userRouter.get("/users/getLocalUser", (request, response) => {
-  console.log("req.user:", request.user);
-  console.log("req.session.passport:", request.session.passport);
-  console.log("req.session:", request.session);
   if (request.user) {
     response.json(request.user);
   } else {
@@ -32,14 +29,12 @@ userRouter.post("/users/register", registerUserAndCreateCart);
 
 userRouter.post(
   "/users/login",
-  passport.authenticate("local", { failureRedirect: "/failedLogIn" }),
+  passport.authenticate("local", { failureRedirect: "/api/users/failedLogIn" }),
   (req, res) => {
-    console.log("req.session:", req.session);
-    console.log("req.session.passport:", req.session.passport);
-    console.log("req.user:", req.user);
     res.json({ message: "Logged in", user: req.user });
   }
 );
+
 userRouter.put("/users/changePassword", changePAssword);
 
 userRouter.delete("/users/:id", deleteUserById);

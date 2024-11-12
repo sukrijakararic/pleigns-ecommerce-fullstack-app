@@ -38,6 +38,7 @@ export const login = async (user) => {
       body: JSON.stringify(user),
     });
     const data = await response.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -62,7 +63,7 @@ export const logout = async () => {
 
 export const getGoogleUser = async () => {
   try {
-    const response = await fetch("/api/getGoogleUser");
+    const response = await fetch("/api/auth/getGoogleUser");
     const data = await response.json();
     return data;
   } catch (error) {

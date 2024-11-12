@@ -4,9 +4,9 @@ const {getCartByUserId, addProductToCart, deleteItemFromCart, checkout } = requi
 
 
     
-    cartRouter.get("/myCart", getCartByUserId);
-    cartRouter.post("/addToCart", addProductToCart);
-    cartRouter.post("/checkout", checkout);
-    cartRouter.delete("/deleteItemFromCart", deleteItemFromCart);
+    cartRouter.get("/cart/myCart", getCartByUserId);
+    cartRouter.post("/cart/addToCart", addProductToCart);
+    cartRouter.post("/cart/checkout", checkout);
+    cartRouter.delete("/cart/deleteItemFromCart", deleteItemFromCart);
     
     module.exports = cartRouter

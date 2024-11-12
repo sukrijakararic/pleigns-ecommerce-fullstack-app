@@ -4,7 +4,7 @@ const { getProducts, getProductById } = require("../queries/products");
 
 
 
-  productsRouter.get("/", getProducts);
-  productsRouter.get("/:productId", getProductById);
+  productsRouter.get("/products/", getProducts);
+  productsRouter.get("/products/:productId", getProductById);
   
   module.exports = productsRouter

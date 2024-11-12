@@ -4,8 +4,8 @@ const { getOrders, deleteOrder, viewOrderItems } = require("../queries/order");
 
 
 
-    orderRouter.get("/myOrders", getOrders);
-    orderRouter.get("/viewOrderItems", viewOrderItems);
-    orderRouter.delete("/deleteOrder", deleteOrder);
+    orderRouter.get("/orders/myOrders", getOrders);
+    orderRouter.get("/orders/viewOrderItems", viewOrderItems);
+    orderRouter.delete("/orders/deleteOrder", deleteOrder);
     
     module.exports = orderRouter
