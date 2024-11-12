@@ -12,7 +12,6 @@ export const GoogleOauth = () => {
   const handleGoogleOauth = async () => {
     window.location.href = `${serverUrlGoogle}`;
     setLoggedIn(true);
-    Navigate("/profile");
   };
 
   return (

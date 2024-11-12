@@ -1,8 +1,19 @@
-export const serverUrlGoogle = "http://localhost:4000/google";
+export const serverUrlGoogle = "http://localhost:4000/auth/google";
+
+/**export const serverUrlGoogle = async () => {
+  try {
+    const response = await fetch("/api/auth/google");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error getting serverUrlGoogle:", error);
+    throw error;
+  }
+} **/
 
 export const addUser = async (user) => {
   try {
-    const response = await fetch("http://localhost:4000/users/register", {
+    const response = await fetch("/api/users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +30,7 @@ export const addUser = async (user) => {
 
 export const login = async (user) => {
   try {
-    const response = await fetch("http://localhost:4000/users/login", {
+    const response = await fetch("/api/users/login", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -35,7 +46,7 @@ export const login = async (user) => {
 
 export const logout = async () => {
   try {
-    const response = await fetch("http://localhost:4000/users/logout", {
+    const response = await fetch("/api/users/logout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,18 +62,18 @@ export const logout = async () => {
 
 export const getGoogleUser = async () => {
   try {
-    const response = await fetch("http://localhost:4000/getGoogleUser");
+    const response = await fetch("/api/getGoogleUser");
     const data = await response.json();
     return data;
   } catch (error) {
     console.error("Error getting user:", error);
     throw error;
   }
- };
+};
 
- export const getLocalUser = async () => {
+export const getLocalUser = async () => {
   try {
-    const response = await fetch("http://localhost:4000/users/getLocalUser");
+    const response = await fetch("/api/users/getLocalUser");
     const data = await response.json();
     console.log(data);
     return data;
@@ -70,4 +81,4 @@ export const getGoogleUser = async () => {
     console.error("Error getting user:", error);
     throw error;
   }
- };
+};

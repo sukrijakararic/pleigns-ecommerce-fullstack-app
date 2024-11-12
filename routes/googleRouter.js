@@ -2,17 +2,19 @@
 const passport = require("../strategies/main");
 const db = require("../db/pool");
 const { REDIRECTURL } = process.env;
+const express = require("express");
+const googleRouter = express.Router();
 
-module.exports = (app) => {
-  app.get(
-    "/google",
+
+  googleRouter.get(
+    "/auth/google",
     passport.authenticate("google", {
       scope: ["email", "profile"],
     })
   );
 
-  app.get(
-    "/google/callback",
+  googleRouter.get(
+    "/auth/google/callback",
     passport.authenticate("google", {
       failureRedirect: "users/failedLogin",
     }),
@@ -40,7 +42,7 @@ module.exports = (app) => {
     }
   );
 
-  app.get("/getGoogleUser", (req, res) => {
+  googleRouter.get("/auth/getGoogleUser", (req, res) => {
     console.log(req.session);
     console.log(req.session.passport);
     if (!req.user) {
@@ -50,4 +52,4 @@ module.exports = (app) => {
     }
   })
   
-};
+  module.exports = googleRouter
