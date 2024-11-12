@@ -1,15 +1,4 @@
-export const serverUrlGoogle = "http://localhost:4000/api/google";
-
-/**export const serverUrlGoogle = async () => {
-  try {
-    const response = await fetch("/api/auth/google");
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error getting serverUrlGoogle:", error);
-    throw error;
-  }
-} **/
+export const serverUrlGoogle = "/api/google";
 
 export const addUser = async (user) => {
   try {
@@ -57,17 +46,6 @@ export const logout = async () => {
     return data;
   } catch (error) {
     console.error("Error logging out:", error);
-    throw error;
-  }
-};
-
-export const getGoogleUser = async () => {
-  try {
-    const response = await fetch("/api/auth/getGoogleUser");
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error getting user:", error);
     throw error;
   }
 };

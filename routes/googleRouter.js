@@ -21,16 +21,16 @@ const googleRouter = express.Router();
     async function (req, res) {
       try {
         const result = await db.query(
-          "SELECT * FROM users WHERE google_profile ->> 'sub' = $1",
-          [req.user.sub]
+          "SELECT * FROM users WHERE email = $1",
+          [req.user.email]
         );
         if (result.rows.length > 0) {
           return res.status(200).redirect(REDIRECTURL);
         }
 
         await db.query(
-          "INSERT INTO users (google_profile) VALUES ($1) RETURNING *",
-          [req.user]
+          "INSERT INTO users (email, firstname, lastname) VALUES ($1, $2, $3) RETURNING *",
+          [ req.user.email, req.user.given_name, req.user.family_name]
         );
 
         res.status(200).redirect(REDIRECTURL);
@@ -41,15 +41,5 @@ const googleRouter = express.Router();
       }
     }
   );
-
-  googleRouter.get("/auth/getGoogleUser", (req, res) => {
-    console.log(req.session);
-    console.log(req.session.passport);
-    if (!req.user) {
-      res.status(401).json({ message: "Not logged in" });
-    } else {
-      res.status(200).json({ user: req.user });
-    }
-  })
   
   module.exports = googleRouter
