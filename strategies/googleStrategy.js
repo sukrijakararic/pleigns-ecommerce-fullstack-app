@@ -8,7 +8,7 @@ module.exports = function (passport) {
         clientID:
           CLIENTID,
         clientSecret: CLIENTSECRET,
-        callbackURL: `${CALLBACKDOMAIN}${PORT}/google/callback`,
+        callbackURL: `${CALLBACKDOMAIN}${PORT}/api/google/callback`,
         passReqToCallback: true,
       },
       function (request, accessToken, refreshToken, profile, done) {

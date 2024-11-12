@@ -7,16 +7,16 @@ const googleRouter = express.Router();
 
 
   googleRouter.get(
-    "/auth/google",
+    "/google",
     passport.authenticate("google", {
       scope: ["email", "profile"],
     })
   );
 
   googleRouter.get(
-    "/auth/google/callback",
+    "/google/callback",
     passport.authenticate("google", {
-      failureRedirect: "users/failedLogin",
+      failureRedirect: "/api/users/failedLogin",
     }),
     async function (req, res) {
       try {

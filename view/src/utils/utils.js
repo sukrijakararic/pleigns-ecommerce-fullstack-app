@@ -1,4 +1,4 @@
-export const serverUrlGoogle = "http://localhost:4000/auth/google";
+export const serverUrlGoogle = "http://localhost:4000/api/google";
 
 /**export const serverUrlGoogle = async () => {
   try {
