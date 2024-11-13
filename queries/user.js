@@ -147,7 +147,7 @@ const showUser = async (request, response, next) => {
     const result = await db.query("SELECT email, firstname, lastname FROM users where id = $1", [
       request.user.id,
     ]);
-    response.json(result.rows);
+    response.json(result.rows[0]);
   }
 };
 
