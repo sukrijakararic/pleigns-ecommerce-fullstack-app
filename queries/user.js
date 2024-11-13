@@ -1,18 +1,10 @@
 const db = require("../db/pool");
 const bcrypt = require("bcrypt");
 
-const showUsers = async (request, response, next) => {
-  try {
-    const result = await db.query("SELECT firstname, lastname FROM users");
-    response.json(result.rows);
-  } catch (err) {
-    console.log(err);
-  }
-};
 // Register a new user
 const registerUserAndCreateCart = async (request, response, next) => {
   // Extract the email, password, firstname, and lastname from the request body
-  const { email, password, firstname, lastname, } = request.body;
+  const { email, password, firstname, lastname } = request.body;
   const existingUser = await getUserByEmail(email);
 
   if (!email || !password || !firstname || !lastname) {
@@ -22,7 +14,9 @@ const registerUserAndCreateCart = async (request, response, next) => {
 
   // Check if the email already exists in the database
   else if (existingUser) {
-    return response.status(400).json({ message: "Hmm.. That pilot already exists" });
+    return response
+      .status(400)
+      .json({ message: "Hmm.. That pilot already exists" });
   }
 
   // Hash the password using bcrypt
@@ -146,12 +140,23 @@ const getUserByIdForRouter = async (request, response, next) => {
   }
 };
 
+const showUser = async (request, response, next) => {
+  if (!request.user) {
+    response.status(401).json({ message: "Please log in" });
+  } else {
+    const result = await db.query("SELECT email, firstname, lastname FROM users where id = $1", [
+      request.user.id,
+    ]);
+    response.json(result.rows);
+  }
+};
+
 module.exports = {
   registerUserAndCreateCart,
   getUserByEmail,
-  showUsers,
   getUserById,
   changePAssword,
   deleteUserById,
   getUserByIdForRouter,
+  showUser,
 };

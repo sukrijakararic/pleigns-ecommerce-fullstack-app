@@ -2,10 +2,10 @@ const express = require("express");
 const userRouter = express.Router();
 const {
   registerUserAndCreateCart,
-  showUsers,
   changePAssword,
   deleteUserById,
   getUserByIdForRouter,
+  showUser,
 } = require("../queries/user");
 const passport = require("../strategies/main");
 
@@ -13,7 +13,7 @@ userRouter.get("/users/failedLogIn", (req, res) => {
   res.json({ message: "Incorrect email or password" });
 });
 
-userRouter.get("/users/", showUsers);
+userRouter.get("/users/loggedIn", showUser);
 
 userRouter.get("/users/getLocalUser", (request, response) => {
   if (request.user) {
