@@ -8,7 +8,7 @@
 
 .landingPageImg {
   background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
-    url("../../assets/fleet_4472x(5).webp");
+    url("../../assets/fleet_4472x(6).webp");
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -25,7 +25,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #FAF9F6;
   font-family: "Roboto";
   margin: 0 1rem;
   width: 20rem;
@@ -52,7 +52,6 @@
 
 @media only screen and (max-width: 703px) {
   .landingPageImg {
-    align-items: normal;
     background-size: cover;
   }
 }

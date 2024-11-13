@@ -23,7 +23,7 @@ const handleLogin = async (event) => {
   event.target.reset();
   if (response.message === "Logged in") {
     setLoggedIn(true);
-    Navigate("/profile");
+    Navigate("/");
   } else {
     document.getElementById("responseStatus").textContent = response.message;
   }

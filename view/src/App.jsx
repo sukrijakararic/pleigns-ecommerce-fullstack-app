@@ -15,6 +15,7 @@ import { LandingPage } from "./components/LandingPage/LandingPage";
 import { AboutUs } from "./components/aboutUs/AboutUs";
 import { Profile } from "./components/profile/Profile";
 import { Login } from "./components/login/Login";
+import { Products } from "./components/products/Products";
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +31,7 @@ const appRouter = createBrowserRouter(
           </RequireAuth>
         }
       />
+      <Route path="products" element={<Products />} />
     </Route>
   )
 );
