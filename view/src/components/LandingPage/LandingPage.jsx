@@ -5,6 +5,7 @@ import { Registration } from "../registration/Registration";
 export const LandingPage = () => {
   return (
     <div className={styles.LandingPage}>
+      <div className={styles.landingPageImg}>
       <div className={styles.landingText}>
         <h1>Welcome to Pleigns!</h1>
         <h2>Lets fly somewhere new</h2>
@@ -16,6 +17,7 @@ export const LandingPage = () => {
       </div>
       <div>
         <Registration />
+      </div>
       </div>
     </div>
   );
