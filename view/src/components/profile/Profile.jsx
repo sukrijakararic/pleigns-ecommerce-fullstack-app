@@ -21,11 +21,12 @@ export const Profile = () => {
     <div className={styles.profileCard}>
       {loggedUser ? (
         <Card style={{ width: "18rem" }} className={styles.profile}>
-          <Card.Header>Pilot</Card.Header>
-          <ListGroup variant="flush">
-            <ListGroup.Item>{loggedUser.email}</ListGroup.Item>
-            <ListGroup.Item>{loggedUser.firstname}</ListGroup.Item>
-            <ListGroup.Item>{loggedUser.lastname}</ListGroup.Item>
+          <Card.Header><p className={styles.profileExtras}>Pilot</p></Card.Header>
+          <ListGroup variant="flush" className={styles.listGroup}>
+            <ListGroup.Item>Email: {loggedUser.email}</ListGroup.Item>
+            <ListGroup.Item>Firstname: {loggedUser.firstname}</ListGroup.Item>
+            <ListGroup.Item>Lastname: {loggedUser.lastname}</ListGroup.Item>
+            <ListGroup.Item><p className={styles.profileExtras}>Ready to fly!</p></ListGroup.Item>
           </ListGroup>
         </Card>
       ) : (
