@@ -6,12 +6,12 @@
   justify-content: center;
 }
 
-.landingPageImg{
+.landingPageImg {
   background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
-  url("../../assets/fleet_4472x(3).webp");
-background-size: 100% 100%;
-background-position: center;
-background-repeat: no-repeat;
+    url("../../assets/fleet_4472x(5).webp");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 70%;
   height: 100%;
   display: flex;
@@ -32,20 +32,38 @@ background-repeat: no-repeat;
   text-align: center;
 }
 
+.productsLink {
+  color: orange;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+.productsLink:hover {
+  
+  text-decoration: underline;
+  font-weight: bold;
+}
+
 @media only screen and (max-width: 1520px) {
   .landingPageImg {
-      width: 80%;
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 703px) {
+  .landingPageImg {
+    align-items: normal;
+    background-size: cover;
   }
 }
 
 @media only screen and (max-width: 1315px) {
   .landingPageImg {
-      width: 90%;
+    width: 90%;
   }
 }
 @media only screen and (max-width: 1000px) {
   .landingPageImg {
-      width: 100%;
+    width: 100%;
   }
 }
-

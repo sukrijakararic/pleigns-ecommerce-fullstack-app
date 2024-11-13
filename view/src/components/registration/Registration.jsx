@@ -25,6 +25,10 @@ export const Registration = () => {
     const response = await addUser(user);
     event.target.reset();
     document.getElementById("responseStatus").textContent = response.message;
+    if (response.message === "User created") {
+      setLoggedIn(true);
+      Navigate("/profile");
+    }
   };
 
   return (
