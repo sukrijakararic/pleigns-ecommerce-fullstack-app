@@ -34,7 +34,7 @@ export const Navigation = () => {
             </Nav.Link>
             <Nav.Link>
                   <Link to="/products" className={styles.navLink}>
-                    Products
+                    Aircraft
                   </Link>
                 </Nav.Link>
             {loggedIn === true ? (
