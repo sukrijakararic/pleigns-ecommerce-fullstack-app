@@ -74,13 +74,15 @@ const { DB } = require("./config");
     INSERT INTO products (name, price, description, image)
     VALUES
       ('Cessna 172 Skyhawk', 359000, 'American four-seat, single-engine, high wing, fixed-wing aircraft made by the Cessna Aircraft Company.', '/src/assets/cessna172Skyhawk.webp'),
-      ('Searey', 1000000, 'The Progressive Aerodyne Searey is an American two-seat, single-engine, amphibious flying boat designed and manufactured by Progressive Aerodyne originally in Orlando, Florida, and now in Tavares, Florida.', '/src/assets/cessna172Skyhawk.webp'),
-      ('Cirrus Vision SF50', 3000000, 'The Cirrus Vision SF50, also known as the Vision Jet, is a single-engine very light jet designed and produced by Cirrus Aircraft of Duluth, Minnesota, United States.', '/src/assets/cessna172Skyhawk.webp'),
-      ('Vans RV-10', 120000, 'The RV-10 is a true four-person airplane, not just an airplane with four seats. It will carry four FAA standard adults, full fuel and sixty pounds of baggage while remaining at or below max gross weight.', '/src/assets/cessna172Skyhawk.webp'),
-      ('Lockheed Martin F-35 Lightning II', 100000000, 'The F-35 Lightning II, also known as the F-35 Lightning, is a family of single-seat, single-engine, all-weather stealth multirole fighters manufactured by Lockheed Martin.', '/src/assets/cessna172Skyhawk.webp'),
-      ('Cessna 150', 75000, 'The Cessna 150 is a two-seat, single-engine, fixed-wing aircraft manufactured by Cessna. It is one of the most popular flight training aircraft in the world.' ,'/src/assets/cessna172Skyhawk.webp'),
-      ('Cessna 182 Skylane', 790000, 'The Cessna 182 Skylane is an American four-seat, single-engine, light airplane built by Cessna of Wichita, Kansas. It has the option of adding two child seats in the baggage area.' , '/src/assets/cessna172Skyhawk.webp');
-  `;
+      ('SeaRey', 1000000, 'The Progressive Aerodyne Searey is an American two-seat, single-engine, amphibious flying boat designed and manufactured by Progressive Aerodyne originally in Orlando, Florida, and now in Tavares, Florida.', '/src/assets/searey.webp'),
+      ('Cirrus Vision SF50', 3000000, 'The Cirrus Vision SF50, also known as the Vision Jet, is a single-engine very light jet designed and produced by Cirrus Aircraft of Duluth, Minnesota, United States.', '/src/assets/cirrus-vision-sf50.webp'),
+      ('Vans RV-10', 120000, 'The RV-10 is a true four-person airplane, not just an airplane with four seats. It will carry four FAA standard adults, full fuel and sixty pounds of baggage while remaining at or below max gross weight.', '/src/assets/vans-rv10.webp'),
+      ('Lockheed Martin F-35 Lightning II', 10000000, 'The F-35 Lightning II, also known as the F-35 Lightning, is a family of single-seat, single-engine, all-weather stealth multirole fighters manufactured by Lockheed Martin.', '/src/assets/f35.webp'),
+      ('Cessna 150', 75000, 'The Cessna 150 is a two-seat, single-engine, fixed-wing aircraft manufactured by Cessna. It is one of the most popular flight training aircraft in the world.' ,'/src/assets/cessna150.webp'),
+      ('Cessna 182 Skylane', 790000, 'The Cessna 182 Skylane is an American four-seat, single-engine, light airplane built by Cessna of Wichita, Kansas. It has the option of adding two child seats in the baggage area.', '/src/assets/cessna182Skylane.webp'),
+      ('Piper PA-46', 1100000, 'The Piper M-Class (PA-46; formerly called the Malibu, Malibu Mirage, Malibu Meridian, and Matrix) is a family of American light aircraft manufactured by Piper Aircraft of Vero Beach, Florida. The aircraft are powered by single engines and have six seats.' ,'/src/assets/piper-malibu.webp'),
+      ('Beechcraft-58 Baron', 500000, 'The Beechcraft Baron is a light twin-engined piston aircraft designed and produced by Beechcraft. The aircraft was introduced in 1961. A low-wing monoplane developed from the Travel Air, it remains in production.' ,'/src/assets/beechcraft-58.webp');
+  `
 
   try {
     const db = new Client({
