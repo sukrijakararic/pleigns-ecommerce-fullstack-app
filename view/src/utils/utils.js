@@ -60,3 +60,14 @@ export const getUser = async () => {
     throw error;
   }
 };
+
+export const getProducts = async () => {
+  try {
+    const response = await fetch("/api/products");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error getting products:", error);
+    throw error;
+  }
+};
