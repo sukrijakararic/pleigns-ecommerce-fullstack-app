@@ -32,6 +32,11 @@ export const Navigation = () => {
                 About
               </Link>
             </Nav.Link>
+            <Nav.Link>
+                  <Link to="/products" className={styles.navLink}>
+                    Products
+                  </Link>
+                </Nav.Link>
             {loggedIn === true ? (
               <>
                 <Nav.Link>
@@ -54,18 +59,13 @@ export const Navigation = () => {
                 </Nav.Link>
               </>
             ) : (
-              <>
-                <Nav.Link>
-                  <Link to="/products" className={styles.navLink}>
-                    Products
-                  </Link>
-                </Nav.Link>
+              
                 <Nav.Link>
                   <Link to="/login" className={styles.navLink}>
                     Login
                   </Link>
                 </Nav.Link>
-              </>
+              
             )}
           </Nav>
         </Navbar.Collapse>

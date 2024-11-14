@@ -27,8 +27,8 @@ googleRouter.get(
       }
 
       const insertedUser = await db.query(
-        "INSERT INTO users (email, firstname, lastname) VALUES ($1, $2, $3) RETURNING *",
-        [req.user.email, req.user.given_name, req.user.family_name]
+        "INSERT INTO users (email, firstname, lastname, google_profile) VALUES ($1, $2, $3, $4) RETURNING *",
+        [req.user.email, req.user.given_name, req.user.family_name, req.user]
       );
 
       const userId = insertedUser.rows[0].id;

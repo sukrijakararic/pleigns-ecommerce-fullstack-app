@@ -23,7 +23,7 @@ export const Products = () => {
   return <div className={styles.productCards}>{products.map((product) => {
     return (
       <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="\src\assets\fleet_4472x(6).webp" />
+      <Card.Img variant="top" src={product.image} />
       <Card.Body>
         <Card.Title>{product.name}</Card.Title>
         <Card.Text>
