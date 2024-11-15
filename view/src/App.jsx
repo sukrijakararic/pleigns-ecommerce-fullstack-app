@@ -16,6 +16,7 @@ import { AboutUs } from "./components/aboutUs/AboutUs";
 import { Profile } from "./components/profile/Profile";
 import { Login } from "./components/login/Login";
 import { Products } from "./components/products/Products";
+import { Cart } from "./components/cart/Cart";
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +33,14 @@ const appRouter = createBrowserRouter(
         }
       />
       <Route path="products" element={<Products />} />
+      <Route
+        path="cart"
+        element={
+          <RequireAuth>
+            <Cart />
+          </RequireAuth>
+        }
+      />
     </Route>
   )
 );

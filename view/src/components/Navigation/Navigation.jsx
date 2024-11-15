@@ -50,12 +50,13 @@ export const Navigation = () => {
                   </Link>
                 </Nav.Link>
                 <Nav.Link>
-                  <img
+                  <Link to="/cart"><img
                     title="Cart"
                     src="src\assets\luggage-cart-solid-svgrepo-com.svg"
                     className={styles.cartIcon}
                     alt="Cart"
                   />
+                  </Link>
                 </Nav.Link>
               </>
             ) : (
