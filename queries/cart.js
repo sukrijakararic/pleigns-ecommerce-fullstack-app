@@ -109,8 +109,15 @@ const addProductToCart = async (request, response, next) => {
   if (!request.user) {
     return response
       .status(401)
-      .json({ error: "Please log in to add items to your cart" });
+      .json({ message: "Please log in to add items to your cart" });
   }
+
+  const userId = await db.query(
+    "SELECT id FROM users WHERE email = $1",
+    [request.user.email]
+  );
+
+  console.log(userId.rows[0].id);
 
   try {
     const { productId, qty } = request.body;
@@ -119,6 +126,10 @@ const addProductToCart = async (request, response, next) => {
       return response
         .status(400)
         .json({ error: "Missing productId parameter" });
+    } else if (qty > 5) {
+      return response
+        .status(400)
+        .json({ message: "Please call to place industrail order" });
     }
 
     const productResult = await db.query(
@@ -131,10 +142,10 @@ const addProductToCart = async (request, response, next) => {
 
     const cartResult = await db.query(
       "SELECT * FROM carts WHERE userid = $1",
-      [request.user.id] // Use req.user.id directly
+      [userId.rows[0].id] // Use req.user.id directly
     );
     if (!cartResult.rows[0]) {
-      throw new Error(`Cart not found for user with ID ${request.user.id}`);
+      throw new Error(`Cart not found for user with ID ${userId.rows[0].id}`);
     }
     const cartId = cartResult.rows[0].id;
 
@@ -143,7 +154,7 @@ const addProductToCart = async (request, response, next) => {
       [cartId, productId, qty]
     );
 
-    response.json({ message: "Product added to cart" });
+    response.json({ message: "Airplane added to hangar" });
   } catch (err) {
     console.log(err);
     next(err);

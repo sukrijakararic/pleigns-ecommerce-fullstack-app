@@ -71,3 +71,20 @@ export const getProducts = async () => {
     throw error;
   }
 };
+
+export const addToCart = async (productId, qty) => { 
+  try {
+    const response = await fetch("/api/cart/addToCart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ productId, qty }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error adding product to cart:", error);
+    throw error;
+  }
+}

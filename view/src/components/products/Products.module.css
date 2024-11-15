@@ -5,3 +5,12 @@
     gap: 1rem;
     margin: 1rem;
 }
+
+.quantityInput {
+    width: 3rem;
+    text-align: center;
+    margin: 0 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+    padding: 0.25rem;
+}
