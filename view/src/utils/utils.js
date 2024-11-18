@@ -88,3 +88,14 @@ export const addToCart = async (productId, qty) => {
     throw error;
   }
 }
+
+export const getCart = async () => {
+  try {
+    const response = await fetch("/api/cart/myCart");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error getting cart:", error);
+    throw error;
+  }
+ }

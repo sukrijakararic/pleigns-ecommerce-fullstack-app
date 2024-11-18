@@ -7,11 +7,16 @@ const getCartByUserId = async (request, response, next) => {
       .status(401)
       .json({ error: "Please log in to veiw your cart" });
   }
-  const userId = request.user.id;
+  const userId = await db.query(
+    "SELECT id FROM users WHERE email = $1",
+    [request.user.email]
+  );
+
+
   try {
     const result = await db.query(
       "SELECT name, qty, SUM(price * qty) AS total, description, cartid, productid FROM carts INNER JOIN  cartitems ON carts.id = cartitems.cartid join products on cartitems.productid = products.id WHERE userid = $1 GROUP BY name, description, cartid, productid, qty",
-      [userId]
+      [userId.rows[0].id]
     );
     if (result.rows.length === 0) {
       return response.json({ message: "No items in cart" });
@@ -117,8 +122,6 @@ const addProductToCart = async (request, response, next) => {
     [request.user.email]
   );
 
-  console.log(userId.rows[0].id);
-
   try {
     const { productId, qty } = request.body;
 
@@ -130,7 +133,7 @@ const addProductToCart = async (request, response, next) => {
       return response
         .status(400)
         .json({ message: "Please call to place industrail order" });
-    } else if (!qty) {  
+    } else if (qty === "0" || !qty) {
       return response
         .status(400)
         .json({ message: "Please specify Airplane quantity" });
