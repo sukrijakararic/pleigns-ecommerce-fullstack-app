@@ -5,6 +5,8 @@ import { getProducts } from "../../utils/utils";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { addToCart } from "../../utils/utils";
+import { LoadingSpinner } from "../loadingSpinner/LoadingSpinner";
+import Button from 'react-bootstrap/Button';
 
 export const Products = () => {
   const { products, setProducts } = useContext(ProductContext);
@@ -36,7 +38,7 @@ export const Products = () => {
 
   return (
     <div>
-    {products.length === 0 ? <p>Loading...</p>: 
+    {products.length === 0 ? <LoadingSpinner /> : 
     <div className={styles.productCards}>
       {products.map((product) => (
         <Card key={product.id} style={{ width: "18rem" }}>
@@ -44,7 +46,6 @@ export const Products = () => {
           <Card.Body>
             <Card.Title>{product.name}</Card.Title>
             <Card.Text>{product.description}</Card.Text>
-            <input type="hidden" value={product.id} />
           </Card.Body>
           <ListGroup className="list-group-flush">
             <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
@@ -63,11 +64,7 @@ export const Products = () => {
               placeholder="qty"
               value={quantity[product.id]}
             />
-            <Card.Link
-              onClick={() => handleAddToCart(product.id)}
-            >
-              Add to cart
-            </Card.Link>
+           <Button onClick={() => handleAddToCart(product.id)} variant="link">Add To Hangar</Button>
             <p>{statusMessages[product.id]}</p>
           </Card.Body>
         </Card>
