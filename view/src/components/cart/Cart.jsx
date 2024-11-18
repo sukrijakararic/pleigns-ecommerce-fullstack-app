@@ -20,12 +20,11 @@ export const Cart = () => {
               <Card.Img variant="top" src={product.image} />
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
-              </Card.Body>
               <ListGroup className="list-group-flush">
                 <ListGroup.Item>Quantity: {product.qty}</ListGroup.Item>
                 <ListGroup.Item>Total: ${product.total}</ListGroup.Item>
               </ListGroup>
-              <Card.Body></Card.Body>
+              </Card.Body>
             </Card>
           ))}
         </div>
