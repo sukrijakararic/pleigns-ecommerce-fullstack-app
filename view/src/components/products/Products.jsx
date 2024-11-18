@@ -8,7 +8,7 @@ import { addToCart } from "../../utils/utils";
 
 export const Products = () => {
   const { products, setProducts } = useContext(ProductContext);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState({});
   const [statusMessages, setStatusMessages] = useState({});
 
   const getProductsFromServer = async () => {
@@ -26,14 +26,17 @@ export const Products = () => {
 
   const handleAddToCart = async (productId) => {
     try {
-      const data = await addToCart(productId, quantity);
+      const data = await addToCart(productId, quantity[productId]);
       setStatusMessages((prev) => ({ ...prev, [productId]: data.message }));
+      setQuantity((prev) => ({ ...prev, [productId]: "" }));
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
+    <div>
+    {products.length === 0 ? <p>Loading...</p>: 
     <div className={styles.productCards}>
       {products.map((product) => (
         <Card key={product.id} style={{ width: "18rem" }}>
@@ -53,12 +56,14 @@ export const Products = () => {
               name="qty"
               min="1"
               max="5"
-              id={quantity}
-              onChange={(e) => setQuantity(parseInt(e.target.value))}
+              id={`qty-${product.id}`}
+              onChange={(e) =>
+                setQuantity((prev) => ({ ...prev, [product.id]: e.target.value }))
+              }
               placeholder="qty"
+              value={quantity[product.id]}
             />
             <Card.Link
-              href="#"
               onClick={() => handleAddToCart(product.id)}
             >
               Add to cart
@@ -67,6 +72,8 @@ export const Products = () => {
           </Card.Body>
         </Card>
       ))}
+    </div>
+}
     </div>
   );
 };
