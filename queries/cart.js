@@ -130,6 +130,10 @@ const addProductToCart = async (request, response, next) => {
       return response
         .status(400)
         .json({ message: "Please call to place industrail order" });
+    } else if (!qty) {  
+      return response
+        .status(400)
+        .json({ message: "Please specify Airplane quantity" });
     }
 
     const productResult = await db.query(

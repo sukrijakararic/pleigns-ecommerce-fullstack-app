@@ -8,7 +8,7 @@ import { addToCart } from "../../utils/utils";
 
 export const Products = () => {
   const { products, setProducts } = useContext(ProductContext);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const [statusMessages, setStatusMessages] = useState({});
 
   const getProductsFromServer = async () => {
