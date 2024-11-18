@@ -6,7 +6,7 @@ import { Footer } from '../footer/Footer'
 
 export const Root = () => {
   return (
-    <div className={styles.Root}>
+    <div>
       <Navigation />
         <Outlet />
         <Footer />

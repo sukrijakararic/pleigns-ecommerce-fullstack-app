@@ -5,3 +5,7 @@
     gap: 1rem;
     margin: 1rem;
 }
+
+.cartContainer {
+    min-height: 100vh;
+}
