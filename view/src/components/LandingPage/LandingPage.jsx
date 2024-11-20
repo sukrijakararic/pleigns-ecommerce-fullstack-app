@@ -3,24 +3,8 @@ import styles from "./LandingPage.module.css";
 import { Registration } from "../registration/Registration";
 import { AuthContext } from "../../context-api/AuthContext";
 import { Link } from "react-router-dom";
-import { CartContext } from "../../context-api/CartContext";
-import { getCart } from "../../utils/utils";
 export const LandingPage = () => {
   const { loggedIn } = useContext(AuthContext);
-  const { setCart } = useContext(CartContext);
-
-  const fetchCart = async () => {
-    try {
-      const data = await getCart();
-      setCart(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchCart();
-  }, []);
 
   return (
     <div className={styles.LandingPage}>

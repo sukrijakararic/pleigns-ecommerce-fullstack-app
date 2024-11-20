@@ -99,3 +99,20 @@ export const getCart = async () => {
     throw error;
   }
  }
+
+ export const removeFromCart = async (productId) => {
+  try {
+    const response = await fetch("/api/cart/deleteItemFromCart", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ productId }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error removing product from cart:", error);
+    throw error;
+  }
+}

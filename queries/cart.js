@@ -15,7 +15,7 @@ const getCartByUserId = async (request, response, next) => {
 
   try {
     const result = await db.query(
-      "SELECT name, qty, SUM(price * qty) AS total, description, cartid, productid FROM carts INNER JOIN  cartitems ON carts.id = cartitems.cartid join products on cartitems.productid = products.id WHERE userid = $1 GROUP BY name, description, cartid, productid, qty",
+      "SELECT name, image, qty, SUM(price * qty) AS total, description, cartid, productid FROM carts INNER JOIN  cartitems ON carts.id = cartitems.cartid join products on cartitems.productid = products.id WHERE userid = $1 GROUP BY name, description, cartid, productid, qty, image",
       [userId.rows[0].id]
     );
     if (result.rows.length === 0) {
@@ -99,11 +99,14 @@ const deleteItemFromCart = async (request, response, next) => {
       .status(401)
       .json({ error: "Please log in to delete items from your cart" });
   }
-  const userId = request.user.id;
+  const userId = await db.query(
+    "SELECT id FROM users WHERE email = $1",
+    [request.user.email]
+  );
   try {
-    const result = await db.query(
+     await db.query(
       "DELETE FROM cartitems WHERE productid = $1 AND cartid = (SELECT id FROM carts WHERE userid = $2)",
-      [productId, userId]
+      [productId, userId.rows[0].id]
     );
     response.json({ message: "Item deleted from cart" });
   } catch (err) {
