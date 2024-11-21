@@ -25,7 +25,7 @@ export const Cart = () => {
   return (
     <div className={styles.cartContainer}>
       {cart.message === "No items in cart" ? (
-        <h3>
+        <h3 style={{ textAlign: "center", margin: "1rem" }}>
           Looks like your hangar is empty, try adding some planes to your
           hangar...
         </h3>
@@ -64,7 +64,7 @@ export const Cart = () => {
                     </span>
                     <CloseButton aria-label="Hide" onClick={ async() => {
                        try {
-                        await removeFromCart(product.id);
+                        await removeFromCart(product.productid);
                         fetchCart();
                       } catch (error) {
                         console.log(error);
