@@ -26,7 +26,6 @@ export const Registration = () => {
     event.target.reset();
     document.getElementById("responseStatus").textContent = response.message;
     if (response.message === "User created") {
-      setLoggedIn(true);
       Navigate("/");
     }
   };

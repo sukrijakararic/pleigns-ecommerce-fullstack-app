@@ -5,7 +5,6 @@ import { AuthContext } from "../../context-api/AuthContext";
 import { Link } from "react-router-dom";
 export const LandingPage = () => {
   const { loggedIn } = useContext(AuthContext);
-
   return (
     <div className={styles.LandingPage}>
       <div className={styles.landingPageImg}>
