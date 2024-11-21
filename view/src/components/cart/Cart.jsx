@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import { getCart, removeFromCart } from "../../utils/utils";
-import CloseButton from 'react-bootstrap/CloseButton';
+import CloseButton from "react-bootstrap/CloseButton";
 export const Cart = () => {
   const { cart, setCart } = useContext(CartContext);
 
@@ -62,14 +62,17 @@ export const Cart = () => {
                     >
                       {product.total}
                     </span>
-                    <CloseButton aria-label="Hide" onClick={ async() => {
-                       try {
-                        await removeFromCart(product.productid);
-                        fetchCart();
-                      } catch (error) {
-                        console.log(error);
-                      }
-                    }}/>
+                    <CloseButton
+                      aria-label="Remove product from cart"
+                      onClick={async () => {
+                        try {
+                          await removeFromCart(product.productid);
+                          fetchCart();
+                        } catch (error) {
+                          console.log(error);
+                        }
+                      }}
+                    />
                   </ListGroup.Item>
                 </ListGroup>
                 <hr />
