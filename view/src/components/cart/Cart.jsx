@@ -6,8 +6,10 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import { getCart, removeFromCart } from "../../utils/utils";
 import CloseButton from "react-bootstrap/CloseButton";
+import { useNavigate } from "react-router-dom";
 export const Cart = () => {
   const { cart, setCart } = useContext(CartContext);
+  const Navigate = useNavigate();
 
   const fetchCart = async () => {
     try {
@@ -85,7 +87,7 @@ export const Cart = () => {
               .map((product) => Number(product.total))
               .reduce((a, b) => a + b, 0)}
           </h3>
-          <Button variant="success">Checkout</Button>
+          <Button variant="success" onClick={() => Navigate("/checkout")}>Checkout</Button>
         </div>
       )}
     </div>
