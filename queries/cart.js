@@ -7,11 +7,9 @@ const getCartByUserId = async (request, response, next) => {
       .status(401)
       .json({ error: "Please log in to veiw your cart" });
   }
-  const userId = await db.query(
-    "SELECT id FROM users WHERE email = $1",
-    [request.user.email]
-  );
-
+  const userId = await db.query("SELECT id FROM users WHERE email = $1", [
+    request.user.email,
+  ]);
 
   try {
     const result = await db.query(
@@ -36,7 +34,10 @@ const checkout = async (request, response, next) => {
       .status(401)
       .json({ error: "Please log in to view your cart" });
   }
-  const userId = request.user.id;
+  const userIdResult = await db.query("SELECT id FROM users WHERE email = $1", [
+    request.user.email,
+  ]);
+  const userId = userIdResult.rows[0].id;
   const created = new Date();
   const modified = new Date();
   const status = "pending";
@@ -99,12 +100,11 @@ const deleteItemFromCart = async (request, response, next) => {
       .status(401)
       .json({ error: "Please log in to delete items from your cart" });
   }
-  const userId = await db.query(
-    "SELECT id FROM users WHERE email = $1",
-    [request.user.email]
-  );
+  const userId = await db.query("SELECT id FROM users WHERE email = $1", [
+    request.user.email,
+  ]);
   try {
-     await db.query(
+    await db.query(
       "DELETE FROM cartitems WHERE productid = $1 AND cartid = (SELECT id FROM carts WHERE userid = $2)",
       [productId, userId.rows[0].id]
     );
@@ -120,10 +120,9 @@ const addProductToCart = async (request, response, next) => {
       .json({ message: "Please log in to add items to your cart" });
   }
 
-  const userId = await db.query(
-    "SELECT id FROM users WHERE email = $1",
-    [request.user.email]
-  );
+  const userId = await db.query("SELECT id FROM users WHERE email = $1", [
+    request.user.email,
+  ]);
 
   try {
     const { productId, qty } = request.body;

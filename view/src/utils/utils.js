@@ -116,3 +116,19 @@ export const getCart = async () => {
     throw error;
   }
 }
+
+export const checkout = async () => {
+  try {
+    const response = await fetch("/api/cart/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = response.json();
+    return data;
+  } catch (err) {
+    console.log("Error:", err);
+    throw err
+  }
+}

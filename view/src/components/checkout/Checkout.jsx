@@ -1,18 +1,26 @@
 import React from "react";
 import styles from "./Checkout.module.css";
 import Button from "react-bootstrap/Button";
-import { useWindowSize } from 'react-use';
+import { useWindowSize } from "react-use";
+import { checkout } from "../../utils/utils";
+import { useNavigate } from "react-router-dom";
 
 export const Checkout = () => {
   const { width } = useWindowSize();
+  const Navigate= useNavigate();
+  const handleCheckout = async (e) => {
+    e.preventDefault();
+    await checkout();
+    Navigate("/");
+  };
   return (
     <div className={styles.checkoutContainer}>
-      <form action="" className={styles.checkoutForm}>
+      <form action="" className={styles.checkoutForm} onSubmit={handleCheckout}>
         <h4>Credit Card info</h4>
         <label
-          controlId="floatingInput"
+          
           label="Name on card"
-          for="name"
+          htmlFor="name"
           className={styles.checkoutLabel}
         >
           Name on card
@@ -27,22 +35,22 @@ export const Checkout = () => {
         />
 
         <div>
-          <label for="ccn" className={styles.checkoutLabel}>
+          <label htmlFor="ccn" className={styles.checkoutLabel}>
             Credit Card Number:
           </label>
           <input
             className={styles.checkoutInput}
             id="ccn"
             type="tel"
-            inputmode="numeric"
+            inputMode="numeric"
             pattern="[0-9\s]{13,19}"
-            autocomplete="cc-number"
-            maxlength="19"
+            autoComplete="cc-number"
+            maxLength="19"
             placeholder="xxxx xxxx xxxx xxxx"
             required
           />
           {width <= 720 ? <br></br> : null}
-          <label label="CCV" for="ccv" className={styles.checkoutLabel}>
+          <label label="CCV" htmlFor="ccv" className={styles.checkoutLabel}>
             CCV
           </label>
           <input
@@ -56,8 +64,8 @@ export const Checkout = () => {
             id="ccv"
           />
           {width <= 942 ? <br></br> : null}
-          
-          <label label="Exp" for="exp" className={styles.checkoutLabel}>
+
+          <label label="Exp" htmlFor="exp" className={styles.checkoutLabel}>
             Expiration
           </label>
           <input
@@ -73,7 +81,7 @@ export const Checkout = () => {
           />
         </div>
         <label
-          for="email"
+          htmlFor="email"
           label="Email address"
           className={styles.checkoutLabel}
         >
@@ -86,7 +94,7 @@ export const Checkout = () => {
           placeholder="name@example.com"
           required
         />
-        <label label="Address" for="address" className={styles.checkoutLabel}>
+        <label label="Address" htmlFor="address" className={styles.checkoutLabel}>
           Address
         </label>
         <input
@@ -98,7 +106,7 @@ export const Checkout = () => {
         />
         <label
           label="Phone (123-456-7899)"
-          for="phone"
+          htmlFor="phone"
           className={styles.checkoutLabel}
         >
           Phone number
