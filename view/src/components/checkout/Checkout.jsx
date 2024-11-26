@@ -1,8 +1,10 @@
 import React from "react";
 import styles from "./Checkout.module.css";
 import Button from "react-bootstrap/Button";
+import { useWindowSize } from 'react-use';
 
 export const Checkout = () => {
+  const { width } = useWindowSize();
   return (
     <div className={styles.checkoutContainer}>
       <form action="" className={styles.checkoutForm}>
@@ -25,7 +27,6 @@ export const Checkout = () => {
         />
 
         <div>
-          
           <label for="ccn" className={styles.checkoutLabel}>
             Credit Card Number:
           </label>
@@ -40,6 +41,7 @@ export const Checkout = () => {
             placeholder="xxxx xxxx xxxx xxxx"
             required
           />
+          {width <= 720 ? <br></br> : null}
           <label label="CCV" for="ccv" className={styles.checkoutLabel}>
             CCV
           </label>
@@ -53,6 +55,8 @@ export const Checkout = () => {
             maxLength={3}
             id="ccv"
           />
+          {width <= 942 ? <br></br> : null}
+          
           <label label="Exp" for="exp" className={styles.checkoutLabel}>
             Expiration
           </label>

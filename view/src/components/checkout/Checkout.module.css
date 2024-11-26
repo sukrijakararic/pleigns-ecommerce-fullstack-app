@@ -16,6 +16,10 @@
   width: 75%;
 }
 
+.checkoutWrapper {
+
+}
+
 .checkoutInput {
   margin: 1rem;
   border-radius: 5px;
@@ -23,5 +27,3 @@
   padding: 0.5rem;
   font-size: 1rem;
 }
-
-
