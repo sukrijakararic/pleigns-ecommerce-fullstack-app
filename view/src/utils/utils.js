@@ -132,3 +132,14 @@ export const checkout = async () => {
     throw err
   }
 }
+
+export const getOrders = async () => {
+  try {
+    const response = await fetch("/api/orders/myOrders");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error getting orders:", error);
+    throw error;
+  }
+}
