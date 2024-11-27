@@ -6,7 +6,12 @@ const getOrders = async (request, response, next) => {
       .status(401)
       .json({ error: "Please log in to see your orders" });
   }
-  const userId = request.user.id;
+  const userRespnse = await db.query("SELECT id FROM users WHERE email = $1", [
+    request.user.email,
+  ]);
+
+  const userId = userRespnse.rows[0].id;
+
   try {
     const result = await db.query("SELECT * FROM orders WHERE userid = $1", [
       userId,
@@ -25,7 +30,11 @@ const viewOrderItems = async (request, response, next) => {
   if (!request.user) {
     return response.json({ error: "Please log in to view order items" });
   }
-  const userId = request.user.id;
+  const userRespnse = await db.query("SELECT id FROM users WHERE email = $1", [
+    request.user.email,
+  ]);
+
+  const userId = userRespnse.rows[0].id;
   try {
     const result = await db.query(
       "SELECT * FROM orderitems JOIN orders ON orderitems.orderid = orders.id WHERE userid = $1",
@@ -41,7 +50,11 @@ const deleteOrder = async (request, response, next) => {
   if (!request.user) {
     return response.json({ error: "Please log in to delete an order" });
   }
-  const userId = request.user.id;
+  const userRespnse = await db.query("SELECT id FROM users WHERE email = $1", [
+    request.user.email,
+  ]);
+
+  const userId = userRespnse.rows[0].id;
   try {
     const deleteOrderItems = await db.query(
       "DELETE FROM orderitems WHERE orderid IN (SELECT id FROM orders WHERE userid = $1)",
