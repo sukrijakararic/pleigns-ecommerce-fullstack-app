@@ -18,6 +18,7 @@ import { Login } from "./components/login/Login";
 import { Products } from "./components/products/Products";
 import { Cart } from "./components/cart/Cart";
 import { Checkout } from "./components/checkout/Checkout";
+import { Orders } from "./components/orders/Orders";
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -47,6 +48,15 @@ const appRouter = createBrowserRouter(
         element={
           <RequireAuth>
             <Checkout />
+          </RequireAuth>
+        }
+      />
+
+      <Route
+        path="orders"
+        element={
+          <RequireAuth>
+            <Orders />
           </RequireAuth>
         }
       />
