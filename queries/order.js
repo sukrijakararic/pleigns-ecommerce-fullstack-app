@@ -47,6 +47,7 @@ const viewOrderItems = async (request, response, next) => {
 };
 
 const deleteOrder = async (request, response, next) => {
+  const { orderId } = request.body;
   if (!request.user) {
     return response.json({ error: "Please log in to delete an order" });
   }
@@ -56,14 +57,12 @@ const deleteOrder = async (request, response, next) => {
 
   const userId = userRespnse.rows[0].id;
   try {
-    const deleteOrderItems = await db.query(
-      "DELETE FROM orderitems WHERE orderid IN (SELECT id FROM orders WHERE userid = $1)",
-      [userId]
+    await db.query(
+      "DELETE FROM orderitems WHERE orderid = $1 IN (SELECT id FROM orders WHERE userid = $2)",
+      [orderId, userId]
     );
 
-    const result = await db.query("DELETE FROM orders WHERE userid = $1", [
-      userId,
-    ]);
+    await db.query("DELETE FROM orders WHERE userid = $1 AND id = $2", [userId, orderId]);
     response.json({ message: "Order deleted" });
   } catch (err) {
     console.log(err);

@@ -143,3 +143,20 @@ export const getOrders = async () => {
     throw error;
   }
 }
+
+export const deleteOrder = async (orderId) => {
+  try {
+    const response = await fetch("/api/orders/deleteOrder", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ orderId }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error deleting order:", error);
+    throw error;
+  }
+}

@@ -1,39 +1,69 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styles from "./Orders.module.css";
-import { getOrders } from "../../utils/utils";
+import { getOrders, deleteOrder } from "../../utils/utils";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import CloseButton from "react-bootstrap/CloseButton";
+import { OrderContext } from "../../context-api/OrderContext";
 
 export const Orders = () => {
-  const [orders, setOrders] = useState([]);
-  const getOrdersFromServer = async () => {
-    const ordersFromServer = await getOrders();
-    console.log(ordersFromServer);
-    setOrders(ordersFromServer);
+  const { orderList, setOrderList } = useContext(OrderContext);
+
+  const fetchOrders = async () => {
+    try {
+      const response = await getOrders();
+      setOrderList(response);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
-    getOrdersFromServer();
+    fetchOrders();
   }, []);
+
   return (
     <div className={styles.ordersDiv}>
-      {orders.map((order) => (
-        <Card key={order.id} style={{ width: "75%", margin: "1rem" }}>
-          <Card.Header>Status: "{order.status}"</Card.Header>
-          <Card.Body>
-            <Card.Title>Total: ${order.total}</Card.Title>
-            <Card.Text>
-              {new Intl.DateTimeFormat("en-US", {
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit",
-              }).format(new Date(order.created))}
-            </Card.Text>
-            <Card.Text>Your order Id: {order.id}</Card.Text>
-            <Button variant="primary">View Items</Button>
-          </Card.Body>
-        </Card>
-      ))}
+      {console.log(orderList)}
+      {orderList.message === "No orders found" ? (
+        <h3 style={{ textAlign: "center", margin: "2rem" }}>
+          You have no orders
+        </h3>
+      ) : (
+        orderList.map((order) => (
+          <Card key={order.id} style={{ width: "75%", margin: "1rem" }}>
+            <Card.Header
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
+              Status: "{order.status}"{" "}
+              <CloseButton
+                title="Delete order"
+                aria-label="Delete order"
+                onClick={async () => {
+                  try {
+                    await deleteOrder(order.id);
+                    fetchOrders();
+                  } catch (error) {
+                    console.error(error);
+                  }
+                }}
+              />
+            </Card.Header>
+            <Card.Body>
+              <Card.Title>Total: ${order.total}</Card.Title>
+              <Card.Text>
+                {new Intl.DateTimeFormat("en-US", {
+                  year: "numeric",
+                  month: "2-digit",
+                  day: "2-digit",
+                }).format(new Date(order.created))}
+              </Card.Text>
+              <Card.Text>Your order Id: {order.id}</Card.Text>
+              <Button variant="primary">View Items</Button>
+            </Card.Body>
+          </Card>
+        ))
+      )}
     </div>
   );
 };
