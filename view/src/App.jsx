@@ -19,6 +19,7 @@ import { Products } from "./components/products/Products";
 import { Cart } from "./components/cart/Cart";
 import { Checkout } from "./components/checkout/Checkout";
 import { Orders } from "./components/orders/Orders";
+import { OrderItems } from "./components/orderItems/OrderItems";
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -57,6 +58,14 @@ const appRouter = createBrowserRouter(
         element={
           <RequireAuth>
             <Orders />
+          </RequireAuth>
+        }
+      />
+      <Route 
+        path="orderitems"
+        element={
+          <RequireAuth>
+            <OrderItems />
           </RequireAuth>
         }
       />

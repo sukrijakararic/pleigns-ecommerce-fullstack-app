@@ -1,13 +1,30 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import styles from "./Orders.module.css";
 import { getOrders, deleteOrder } from "../../utils/utils";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import CloseButton from "react-bootstrap/CloseButton";
 import { OrderContext } from "../../context-api/OrderContext";
+import { useNavigate } from "react-router-dom";
+import { ViewOrderItemsContext } from "../../context-api/ViewOrderItemsContext";
+import { viewOrderItems } from "../../utils/utils";
 
 export const Orders = () => {
   const { orderList, setOrderList } = useContext(OrderContext);
+  const {setViewOrderItems } = useContext(
+    ViewOrderItemsContext
+  );
+  const Navigate = useNavigate();   
+
+  const handleViewOrderItems = async (orderId) => {
+    try {
+      const orderItemsFromDb = await viewOrderItems(orderId);
+      setViewOrderItems(orderItemsFromDb);
+      Navigate("/orderItems");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const fetchOrders = async () => {
     try {
@@ -59,7 +76,12 @@ export const Orders = () => {
                 }).format(new Date(order.created))}
               </Card.Text>
               <Card.Text>Your order Id: {order.id}</Card.Text>
-              <Button variant="primary">View Items</Button>
+              <Button
+                onClick={() => handleViewOrderItems(order.id)}
+                variant="primary"
+              >
+                View Items
+              </Button>
             </Card.Body>
           </Card>
         ))

@@ -4,6 +4,7 @@ import { UserProvider } from "./UserContext";
 import { ProductProvider } from "./ProductContext";
 import { CartProvider } from "./CartContext";
 import { OrderProvider } from "./OrderContext";
+import { ViewOrderItemsProvider } from "./ViewOrderItemsContext";
 export const ContextProviders = ({ children }) => {
   return (
     <div>
@@ -11,7 +12,9 @@ export const ContextProviders = ({ children }) => {
         <ProductProvider>
           <CartProvider>
             <OrderProvider>
-              <UserProvider>{children}</UserProvider>
+              <ViewOrderItemsProvider>
+                <UserProvider>{children}</UserProvider>
+              </ViewOrderItemsProvider>
             </OrderProvider>
           </CartProvider>
         </ProductProvider>

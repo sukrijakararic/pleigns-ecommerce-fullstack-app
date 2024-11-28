@@ -72,7 +72,7 @@ export const getProducts = async () => {
   }
 };
 
-export const addToCart = async (productId, qty) => { 
+export const addToCart = async (productId, qty) => {
   try {
     const response = await fetch("/api/cart/addToCart", {
       method: "POST",
@@ -87,7 +87,7 @@ export const addToCart = async (productId, qty) => {
     console.error("Error adding product to cart:", error);
     throw error;
   }
-}
+};
 
 export const getCart = async () => {
   try {
@@ -98,9 +98,9 @@ export const getCart = async () => {
     console.error("Error getting cart:", error);
     throw error;
   }
- }
+};
 
- export const removeFromCart = async (productId) => {
+export const removeFromCart = async (productId) => {
   try {
     const response = await fetch("/api/cart/deleteItemFromCart", {
       method: "DELETE",
@@ -115,7 +115,7 @@ export const getCart = async () => {
     console.error("Error removing product from cart:", error);
     throw error;
   }
-}
+};
 
 export const checkout = async () => {
   try {
@@ -129,9 +129,9 @@ export const checkout = async () => {
     return data;
   } catch (err) {
     console.log("Error:", err);
-    throw err
+    throw err;
   }
-}
+};
 
 export const getOrders = async () => {
   try {
@@ -142,7 +142,7 @@ export const getOrders = async () => {
     console.error("Error getting orders:", error);
     throw error;
   }
-}
+};
 
 export const deleteOrder = async (orderId) => {
   try {
@@ -159,4 +159,21 @@ export const deleteOrder = async (orderId) => {
     console.error("Error deleting order:", error);
     throw error;
   }
-}
+};
+
+export const viewOrderItems = async (orderId) => {
+  try {
+    const response = await fetch("/api/orders/viewOrderItems", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ orderId }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error getting order items:", error);
+    throw error;
+  }
+};

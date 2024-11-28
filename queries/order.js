@@ -27,6 +27,7 @@ const getOrders = async (request, response, next) => {
 };
 
 const viewOrderItems = async (request, response, next) => {
+  const { orderId } = request.body;
   if (!request.user) {
     return response.json({ error: "Please log in to view order items" });
   }
@@ -37,8 +38,8 @@ const viewOrderItems = async (request, response, next) => {
   const userId = userRespnse.rows[0].id;
   try {
     const result = await db.query(
-      "SELECT * FROM orderitems JOIN orders ON orderitems.orderid = orders.id WHERE userid = $1",
-      [userId]
+      "SELECT orderitems.* FROM orderitems INNER JOIN orders ON orderitems.orderid = orders.id WHERE orders.id = $1",
+      [orderId]
     );
     response.json(result.rows);
   } catch (err) {
