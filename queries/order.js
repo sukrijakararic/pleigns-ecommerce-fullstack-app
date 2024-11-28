@@ -57,12 +57,11 @@ const deleteOrder = async (request, response, next) => {
 
   const userId = userRespnse.rows[0].id;
   try {
-    await db.query(
-      "DELETE FROM orderitems WHERE orderid IN (SELECT id FROM orders WHERE userid = $1)",
-      [userId]
-    );
-
-    await db.query("DELETE FROM orders WHERE userid = $1 AND id = $2", [userId, orderId]);
+    await db.query("DELETE FROM orderitems WHERE orderid = $1", [orderId]);
+    await db.query("DELETE FROM orders WHERE userid = $1 AND id = $2", [
+      userId,
+      orderId,
+    ]);
     response.json({ message: "Order deleted" });
   } catch (err) {
     console.log(err);

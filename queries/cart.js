@@ -61,28 +61,19 @@ const checkout = async (request, response, next) => {
     );
 
     const orderIdResult = await db.query(
-      "SELECT id FROM orders WHERE userid = $1",
+      "SELECT id FROM orders WHERE userid = $1 ORDER BY id DESC LIMIT 1",
       [userId]
     );
 
     const orderId = orderIdResult.rows[0].id;
+    console.log(orderId);
 
-    const orderItemsResult = await Promise.all(
-      userCartResult.rows.map(async (item) => {
-        return await db.query(
-          "INSERT INTO orderitems (productid, created, orderid, qty, price, name, description) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
-          [
-            item.productid,
-            created,
-            orderId,
-            item.qty,
-            item.price,
-            item.name,
-            item.description,
-          ]
-        );
-      })
-    );
+    for (const item of userCartResult.rows) {
+      await db.query(
+        "INSERT INTO orderitems (orderid, productid, qty, price, name, description, created) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+        [orderId, item.productid, item.qty, item.price, item.name, item.description, created]
+      );
+    }
 
     const deleteCartItemsResult = await db.query(
       "DELETE FROM cartitems WHERE cartid = (SELECT id FROM carts WHERE userid = $1)",
