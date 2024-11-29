@@ -38,7 +38,7 @@ const viewOrderItems = async (request, response, next) => {
   const userId = userRespnse.rows[0].id;
   try {
     const result = await db.query(
-      "SELECT orderitems.* FROM orderitems INNER JOIN orders ON orderitems.orderid = orders.id WHERE orders.id = $1",
+      "SELECT orderitems.*, image FROM orderitems INNER JOIN orders ON orderitems.orderid = orders.id INNER JOIN products ON orderitems.productid = products.id WHERE orders.id = $1",
       [orderId]
     );
     response.json(result.rows);

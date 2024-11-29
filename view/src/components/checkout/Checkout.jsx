@@ -11,7 +11,7 @@ export const Checkout = () => {
   const handleCheckout = async (e) => {
     e.preventDefault();
     await checkout();
-    Navigate("/");
+    Navigate("/orders");
   };
   return (
     <div className={styles.checkoutContainer}>

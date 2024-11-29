@@ -11,10 +11,8 @@ import { viewOrderItems } from "../../utils/utils";
 
 export const Orders = () => {
   const { orderList, setOrderList } = useContext(OrderContext);
-  const {setViewOrderItems } = useContext(
-    ViewOrderItemsContext
-  );
-  const Navigate = useNavigate();   
+  const { setViewOrderItems } = useContext(ViewOrderItemsContext);
+  const Navigate = useNavigate();
 
   const handleViewOrderItems = async (orderId) => {
     try {
@@ -48,13 +46,17 @@ export const Orders = () => {
         </h3>
       ) : (
         orderList.map((order) => (
-          <Card key={order.id} style={{ width: "75%", margin: "1rem" }}>
+          <Card
+            id={styles.orderContainer}
+            key={order.id}
+            style={{ width: "50%", margin: "1rem" }}
+          >
             <Card.Header
               style={{ display: "flex", justifyContent: "space-between" }}
             >
-              Status: "{order.status}"{" "}
+              <h5>Status: "<span style={{ color: "#D5B60A" }}>{order.status}</span>"</h5>
               <CloseButton
-                title="Delete order"
+                title="Cancel order"
                 aria-label="Delete order"
                 onClick={async () => {
                   try {
@@ -67,7 +69,12 @@ export const Orders = () => {
               />
             </Card.Header>
             <Card.Body>
-              <Card.Title>Total: ${order.total}</Card.Title>
+              <Card.Title>
+                Total:{" "}
+                <span style={{ color: "green", fontWeight: "bold" }}>
+                  {order.total}
+                </span>
+              </Card.Title>
               <Card.Text>
                 {new Intl.DateTimeFormat("en-US", {
                   year: "numeric",
