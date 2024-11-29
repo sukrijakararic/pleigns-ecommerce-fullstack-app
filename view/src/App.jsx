@@ -20,6 +20,7 @@ import { Cart } from "./components/cart/Cart";
 import { Checkout } from "./components/checkout/Checkout";
 import { Orders } from "./components/orders/Orders";
 import { OrderItems } from "./components/orderItems/OrderItems";
+import { Contact } from "./components/contact/Contact";
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -61,7 +62,7 @@ const appRouter = createBrowserRouter(
           </RequireAuth>
         }
       />
-      <Route 
+      <Route
         path="orderitems"
         element={
           <RequireAuth>
@@ -69,7 +70,16 @@ const appRouter = createBrowserRouter(
           </RequireAuth>
         }
       />
+
+<Route
+        path="contact"
+        element={
+            <Contact />
+        
+        }
+      />
     </Route>
+    
   )
 );
 

@@ -26,17 +26,21 @@ export const Navigation = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className={styles.navLink}>Contact</Nav.Link>
+            <Nav.Link>
+              <Link to="/contact" className={styles.navLink}>
+                Contact
+              </Link>
+            </Nav.Link>
             <Nav.Link>
               <Link to="/about" className={styles.navLink}>
                 About
               </Link>
             </Nav.Link>
             <Nav.Link>
-                  <Link to="/products" className={styles.navLink}>
-                    Aircraft
-                  </Link>
-                </Nav.Link>
+              <Link to="/products" className={styles.navLink}>
+                Aircraft
+              </Link>
+            </Nav.Link>
             {loggedIn === true ? (
               <>
                 <Nav.Link>
@@ -50,23 +54,22 @@ export const Navigation = () => {
                   </Link>
                 </Nav.Link>
                 <Nav.Link>
-                  <Link to="/cart"><img
-                    title="Cart"
-                    src="src\assets\luggage-cart-solid-svgrepo-com.svg"
-                    className={styles.cartIcon}
-                    alt="Cart"
-                  />
+                  <Link to="/cart">
+                    <img
+                      title="Cart"
+                      src="src\assets\luggage-cart-solid-svgrepo-com.svg"
+                      className={styles.cartIcon}
+                      alt="Cart"
+                    />
                   </Link>
                 </Nav.Link>
               </>
             ) : (
-              
-                <Nav.Link>
-                  <Link to="/login" className={styles.navLink}>
-                    Login
-                  </Link>
-                </Nav.Link>
-              
+              <Nav.Link>
+                <Link to="/login" className={styles.navLink}>
+                  Login
+                </Link>
+              </Nav.Link>
             )}
           </Nav>
         </Navbar.Collapse>
