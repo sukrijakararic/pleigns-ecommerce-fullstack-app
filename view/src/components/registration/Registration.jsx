@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../context-api/AuthContext";
+import React from "react";
 import styles from "./Registration.module.css";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
@@ -10,8 +9,6 @@ import { GoogleOauth } from "../googleOauth/GoogleOauth";
 
 export const Registration = () => {
   const Navigate = useNavigate();
-
-  const { setLoggedIn } = useContext(AuthContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

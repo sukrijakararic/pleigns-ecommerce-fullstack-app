@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import styles from "./OrderItems.module.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -15,7 +15,7 @@ export const OrderItems = () => {
       <h1>Order Items</h1>
       {console.log(viewOrderItems)}
       {viewOrderItems.map((item) => (
-        <Card style={{ width: "18rem", margin: "1rem" }}>
+        <Card key={item.id} style={{ width: "18rem", margin: "1rem" }}>
           <Card.Img variant="top" src={item.image} />
           <Card.Body>
             <Card.Title>{item.name}</Card.Title>
