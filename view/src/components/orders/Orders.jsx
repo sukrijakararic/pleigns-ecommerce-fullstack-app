@@ -71,7 +71,7 @@ export const Orders = () => {
             <Card.Body>
               <Card.Title>
                 Total:{" "}
-                <span style={{ color: "green", fontWeight: "bold" }}>
+                $<span style={{ color: "green", fontWeight: "bold" }}>
                   {order.total}
                 </span>
               </Card.Title>
