@@ -13,4 +13,11 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    assetsDir: 'assets',
+    assets: [
+      'src/assets/**/*',
+      '**/*.{png,jpg,svg,woff,woff2,eot,ttf,otf,webp}',
+    ],
+  },
 })
