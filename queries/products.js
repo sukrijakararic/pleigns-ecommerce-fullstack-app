@@ -4,8 +4,8 @@ const db = require("../db/pool");
 
   const getProducts = async (request, response, next) => {
     try {
-      const result = await db.query("SELECT * FROM products");
-      response.json(result.rows);
+      //const result = await db.query("SELECT * FROM products");
+      response.json({ message: "Products found" });
     } catch (err) {
       console.log(err);
     }};
