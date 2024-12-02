@@ -45,6 +45,10 @@ app.use(
   googleRouter
 );
 
+app.get("/", (req, res) => {
+  res.send("Welcome to Pleigns!");
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
