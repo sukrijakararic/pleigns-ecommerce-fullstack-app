@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import copy from 'rollup-plugin-copy';
 
 
 import react from '@vitejs/plugin-react'
@@ -14,4 +15,11 @@ export default defineConfig({
       },
     },
   },
+  plugins: [
+    copy({
+      targets: [
+        { src: 'assets', dest: 'dist/assets' },
+      ],
+    }),
+  ],
 })
