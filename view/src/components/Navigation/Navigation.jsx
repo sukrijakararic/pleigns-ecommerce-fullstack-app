@@ -57,7 +57,7 @@ export const Navigation = () => {
                   <Link to="/cart">
                     <img
                       title="Cart"
-                      src="../../assets/icons8-shopping-cart-48.png"
+                      src="../assets/icons8-shopping-cart-48.png"
                       className={styles.cartIcon}
                       alt="Cart"
                     />
