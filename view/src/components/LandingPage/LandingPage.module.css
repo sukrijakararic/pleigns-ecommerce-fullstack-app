@@ -8,7 +8,7 @@
 
 .landingPageImg {
   background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
-    url("/fleet_4472x(6).webp");
+    url("src/assets/fleet_4472x(6).webp");
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
