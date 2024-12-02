@@ -63,7 +63,7 @@ export const getUser = async () => {
 
 export const getProducts = async () => {
   try {
-    const response = await fetch("https://pleigns-api.onrender.com/api/products");
+    const response = await fetch("https://pleigns-api.onrender.com/products");
     const data = await response.json();
     return data;
   } catch (error) {
