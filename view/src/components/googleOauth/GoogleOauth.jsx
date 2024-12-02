@@ -16,7 +16,7 @@ export const GoogleOauth = () => {
     <Button variant="light" onClick={handleGoogleOauth}>
       <img
         className={styles.oauthIcons}
-        src="\src\assets\google_icon.webp"
+        src="./google_icon.webp"
         alt="Icon of Google"
       />
     </Button>
