@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import styles from "./Navigation.module.css";
 import { AuthContext } from "../../context-api/AuthContext";
 import { useContext } from "react";
-import cart from "../../assets/luggage-cart-solid-svgrepo-com.svg"
+
 
 import { logout } from "../../utils/utils";
 
@@ -58,7 +58,7 @@ export const Navigation = () => {
                   <Link to="/cart">
                     <img
                       title="Cart"
-                      src={cart}
+                      src="/src/public/luggage-cart-solid-svgrepo-com.svg"
                       className={styles.cartIcon}
                       alt="Cart"
                     />
