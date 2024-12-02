@@ -28,6 +28,7 @@ export const Products = () => {
     try {
       const data = await getCart();
       setCart(data);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
