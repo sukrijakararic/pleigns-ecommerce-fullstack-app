@@ -8,6 +8,7 @@ import { addToCart } from "../../utils/utils";
 import { LoadingSpinner } from "../loadingSpinner/LoadingSpinner";
 import Button from "react-bootstrap/Button";
 import { CartContext } from "../../context-api/CartContext";
+import { LoadingSpinner } from "../loadingSpinner/LoadingSpinner";
 
 export const Products = () => {
   const { products, setProducts } = useContext(ProductContext);
@@ -57,7 +58,11 @@ export const Products = () => {
         <div className={styles.productCards}>
           {products.map((product) => (
             <Card key={product.id} style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={product.image} />
+              {product.image ? (
+                <Card.Img variant="top" src={product.image} />
+              ) : (
+                <LoadingSpinner />
+              )}
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
                 <Card.Text>{product.description}</Card.Text>
