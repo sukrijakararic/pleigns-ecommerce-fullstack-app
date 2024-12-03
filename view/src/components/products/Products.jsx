@@ -57,11 +57,8 @@ export const Products = () => {
         <div className={styles.productCards}>
           {products.map((product) => (
             <Card key={product.id} style={{ width: "18rem" }}>
-              {product.image ? (
-                <Card.Img variant="top" src={product.image} />
-              ) : (
-                <LoadingSpinner />
-              )}
+              <Card.Img variant="top" src={product.image} />
+
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
                 <Card.Text>{product.description}</Card.Text>
@@ -101,4 +98,3 @@ export const Products = () => {
     </div>
   );
 };
-

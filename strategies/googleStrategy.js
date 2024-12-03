@@ -1,5 +1,5 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const { CLIENTID, CLIENTSECRET, CALLBACKDOMAIN, PORT } = process.env;
+const { CLIENTID, CLIENTSECRET } = process.env;
 
 module.exports = function (passport) {
   passport.use(
