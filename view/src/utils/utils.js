@@ -2,7 +2,7 @@ export const serverUrlGoogle = "/api/google";
 
 export const addUser = async (user) => {
   try {
-    const response = await fetch("https://pleigns-api.onrender.com/api/users/register", {
+    const response = await fetch("/api/users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export const addUser = async (user) => {
 
 export const login = async (user) => {
   try {
-    const response = await fetch("https://pleigns-api.onrender.com/api/users/login", {
+    const response = await fetch("/api/users/login", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -36,7 +36,7 @@ export const login = async (user) => {
 
 export const logout = async () => {
   try {
-    const response = await fetch("https://pleigns-api.onrender.com/api/users/logout", {
+    const response = await fetch("/api/users/logout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,7 +63,7 @@ export const getUser = async () => {
 
 export const getProducts = async () => {
   try {
-    const response = await fetch("https://pleigns-api.onrender.com/api/products/");
+    const response = await fetch("/api/products/");
     const data = await response.json();
     return data;
   } catch (error) {
@@ -102,7 +102,7 @@ export const getCart = async () => {
 
 export const removeFromCart = async (productId) => {
   try {
-    const response = await fetch("https://pleigns-api.onrender.com/api/cart/deleteItemFromCart", {
+    const response = await fetch("/api/cart/deleteItemFromCart", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -119,7 +119,7 @@ export const removeFromCart = async (productId) => {
 
 export const checkout = async () => {
   try {
-    const response = await fetch("https://pleigns-api.onrender.com/api/cart/checkout", {
+    const response = await fetch("/api/cart/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -135,7 +135,7 @@ export const checkout = async () => {
 
 export const getOrders = async () => {
   try {
-    const response = await fetch("https://pleigns-api.onrender.com/api/orders/myOrders");
+    const response = await fetch("/api/orders/myOrders");
     const data = await response.json();
     return data;
   } catch (error) {
@@ -146,7 +146,7 @@ export const getOrders = async () => {
 
 export const deleteOrder = async (orderId) => {
   try {
-    const response = await fetch("https://pleigns-api.onrender.com/api/orders/deleteOrder", {
+    const response = await fetch("/api/orders/deleteOrder", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -163,7 +163,7 @@ export const deleteOrder = async (orderId) => {
 
 export const viewOrderItems = async (orderId) => {
   try {
-    const response = await fetch("https://pleigns-api.onrender.com/api/orders/viewOrderItems", {
+    const response = await fetch("/api/orders/viewOrderItems", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
