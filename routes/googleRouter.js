@@ -23,7 +23,7 @@ googleRouter.get(
         req.user.email,
       ]);
       if (result.rows.length > 0) {
-        console.log{req.user};
+        console.log(req.user);
         return res.status(200).redirect(REDIRECTURL);
       }
 
