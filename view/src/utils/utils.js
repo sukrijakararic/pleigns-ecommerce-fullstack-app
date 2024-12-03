@@ -52,7 +52,7 @@ export const logout = async () => {
 
 export const getUser = async () => {
   try {
-    const response = await fetch("https://pleigns-api.onrender.com/api/users/loggedIn");
+    const response = await fetch("/api/users/loggedIn");
     const data = await response.json();
     return data;
   } catch (error) {
@@ -74,7 +74,7 @@ export const getProducts = async () => {
 
 export const addToCart = async (productId, qty) => {
   try {
-    const response = await fetch("https://pleigns-api.onrender.com/api/cart/addToCart", {
+    const response = await fetch("/api/cart/addToCart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
