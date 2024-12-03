@@ -5,7 +5,6 @@ import { getProducts, getCart } from "../../utils/utils";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import { addToCart } from "../../utils/utils";
-import { LoadingSpinner } from "../loadingSpinner/LoadingSpinner";
 import Button from "react-bootstrap/Button";
 import { CartContext } from "../../context-api/CartContext";
 import { LoadingSpinner } from "../loadingSpinner/LoadingSpinner";
