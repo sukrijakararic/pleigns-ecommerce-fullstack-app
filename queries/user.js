@@ -141,7 +141,7 @@ const getUserByIdForRouter = async (request, response, next) => {
 };
 
 const showUser = async (request, response, next) => {
-  console.log("showUser: ", request.user);
+  console.log("showUser: ", request);
   if (!request.user) {
     response.status(401).json({ message: "Please log in" });
   } else {
