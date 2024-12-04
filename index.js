@@ -3,8 +3,7 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const helmet = require("helmet");
-const { PORT, SESSION_SECRET } = require("./config");      httpOnly: true,
-secure: false, // set to true if you're using HTTPS
+const { PORT, SESSION_SECRET } = require("./config");
 const passport = require("./strategies/main");
 const session = require("express-session");
 
@@ -25,7 +24,7 @@ app.use(
     cookie: {
       maxAge: 3600000, // 1 hour
       httpOnly: true,
-      secure: true, // set to true if you're using HTTPS
+      secure: false, // set to true if you're using HTTPS
     },
   })
 );
