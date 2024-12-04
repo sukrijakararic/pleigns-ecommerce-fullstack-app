@@ -22,8 +22,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 3600000, // 1 hour
-      httpOnly: true,
+      maxAge: 3600000, // 1 hour,
       secure: false, // set to true if you're using HTTPS
     },
   })
