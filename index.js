@@ -24,7 +24,7 @@ app.use(
     cookie: {
       maxAge: 3600000, // 1 hour
       httpOnly: true,
-      secure: true, // set to true if you're using HTTPS
+      secure: false, // set to true if you're using HTTPS
     },
   })
 );
@@ -44,6 +44,10 @@ app.use(
   orderRouter,
   googleRouter
 );
+
+app.get("/", (req, res) => {
+  res.send("Welcome to Pleigns!");
+});
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
