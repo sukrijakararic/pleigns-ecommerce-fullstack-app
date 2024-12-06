@@ -13,7 +13,7 @@ googleRouter.get(
 );
 
 googleRouter.get(
-  "/api/google/callback",
+  "/google/callback",
   passport.authenticate("google", {
     failureRedirect: "/api/users/failedLogin",
   }),
