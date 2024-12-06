@@ -6,14 +6,14 @@ const express = require("express");
 const googleRouter = express.Router();
 
 googleRouter.get(
-  "/google",
+  "/api/google",
   passport.authenticate("google", {
     scope: ["email", "profile"],
   })
 );
 
 googleRouter.get(
-  "/google/callback",
+  "/api/google/callback",
   passport.authenticate("google", {
     failureRedirect: "/api/users/failedLogin",
   }),
