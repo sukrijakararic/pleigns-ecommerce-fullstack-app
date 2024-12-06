@@ -1,4 +1,4 @@
-export const serverUrlGoogle = "https://pleigns-api.onrender.com/api/google";
+export const serverUrlGoogle = "/api/google";
 
 export const addUser = async (user) => {
   try {

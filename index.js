@@ -13,12 +13,8 @@ const cartRouter = require("./routes/cart");
 const orderRouter = require("./routes/order");
 const googleRouter = require("./routes/googleRouter");
 
-const corsOptions = {
-  origin: 'https://pleigns-api.onrender.com/api/google/callback',
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
+// secuirty
+app.use(cors());
 app.use(helmet());
 app.use(
   session({
@@ -48,10 +44,6 @@ app.use(
   orderRouter,
   googleRouter
 );
-
-app.get("/", (req, res) => {
-  res.send("Welcome to Pleigns!");
-});
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
