@@ -13,8 +13,12 @@ const cartRouter = require("./routes/cart");
 const orderRouter = require("./routes/order");
 const googleRouter = require("./routes/googleRouter");
 
-// secuirty
-app.use(cors());
+const corsOptions = {
+  origin: 'https://pleigns-api.onrender.com/api/google/callback',
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(helmet());
 app.use(
   session({
