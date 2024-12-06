@@ -8,7 +8,7 @@ module.exports = function (passport) {
         clientID:
           CLIENTID,
         clientSecret: CLIENTSECRET,
-        callbackURL: '/api/google/callback',
+        callbackURL: 'https://pleigns-api.onrender.com/api/google/callback',
         passReqToCallback: true,
       },
       function (request, accessToken, refreshToken, profile, done) {
