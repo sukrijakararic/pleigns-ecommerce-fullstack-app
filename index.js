@@ -36,14 +36,12 @@ app.use(
       maxAge: 3600000, // 1 hour
       httpOnly: true,
       secure: true,
-      sameSite: "none",
     },
   })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.set("trust proxy", 1); // Trust the first proxy
 
 
 //body parser
