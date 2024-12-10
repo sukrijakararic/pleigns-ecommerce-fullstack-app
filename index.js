@@ -6,7 +6,7 @@ const helmet = require("helmet");
 const { PORT, SESSION_SECRET } = require("./config");
 const passport = require("./strategies/main");
 const session = require("express-session");
-const RedisStore = require("connect-redis");
+const RedisStore = require("connect-redis").default;
 const redis = require("redis");
 
 const userRouter = require("./routes/user");
@@ -36,6 +36,7 @@ app.use(
     cookie: {
       maxAge: 3600000, // 1 hour
       httpOnly: true,
+      secure: true,
     },
   })
 );
