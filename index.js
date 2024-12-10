@@ -6,8 +6,8 @@ const helmet = require("helmet");
 const { PORT, SESSION_SECRET } = require("./config");
 const passport = require("./strategies/main");
 const session = require("express-session");
-const RedisStore = require("connect-redis").default;
-const redis = require("redis");
+const { createClient } = require("redis");
+const { RedisStore } = require("connect-redis");
 
 const userRouter = require("./routes/user");
 const productsRouter = require("./routes/products");
@@ -20,9 +20,9 @@ app.use(cors());
 app.use(helmet());
 
 
-const redisClient = redis.createClient({
-  url: process.env.REDIS_URL, // Your Redis connection URL
-  legacyMode: true, // Add this if you're using older versions of `connect-redis`
+const redisClient = createClient({
+  url: process.env.REDIS_URL,
+  legacyMode: true,
 });
 
 redisClient.connect().catch(console.error);
