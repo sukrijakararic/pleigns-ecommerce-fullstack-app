@@ -14,8 +14,13 @@ const orderRouter = require("./routes/order");
 const googleRouter = require("./routes/googleRouter");
 
 // secuirty
-app.use(cors());
-app.use(helmet());
+app.use(cors({
+  origin: "https://pleigns-ecommerce-fullstack-app.onrender.com", // Replace with your frontend URL
+  credentials: true,
+}));
+app.use( helmet({
+  contentSecurityPolicy: false, // Disable if not configured correctly
+}));
 app.use(
   session({
     secret: SESSION_SECRET,
@@ -24,7 +29,7 @@ app.use(
     cookie: {
       maxAge: 3600000, // 1 hour
       httpOnly: true,
-      secure: false, // set to true if using HTTPS
+      secure: true, // set to true if using HTTPS
     },
   })
 );
