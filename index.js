@@ -6,7 +6,7 @@ const helmet = require("helmet");
 const { PORT, SESSION_SECRET } = require("./config");
 const passport = require("./strategies/main");
 const session = require("express-session");
-const RedisStore = require("connect-redis")(session);
+const RedisStore = require("connect-redis");
 const redis = require("redis");
 
 const userRouter = require("./routes/user");
