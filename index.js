@@ -24,8 +24,7 @@ app.use(
     cookie: {
       maxAge: 3600000, // 1 hour
       httpOnly: true,
-      secure: true, // set to true if you're using HTTPS
-      sameSite: "none",
+      secure: false, // set to true if using HTTPS
     },
   })
 );
