@@ -25,7 +25,7 @@ const redisClient = createClient({
 });
 
 redisClient.connect().catch(console.error);
-client.ping((err, res) => {
+redisClient.ping((err, res) => {
   if (err) {
     console.error('Error pinging Redis:', err);
   } else {
