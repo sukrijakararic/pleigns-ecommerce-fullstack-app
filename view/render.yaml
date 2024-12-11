@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: my-service
+    env: node
+    build:
+      command: npm run build
+    routes:
+      - type: proxy
+        url: /api/*
+        target: https://pleigns-api.onrender.com/api/*
