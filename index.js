@@ -16,7 +16,7 @@ const cartRouter = require("./routes/cart");
 const orderRouter = require("./routes/order");
 const googleRouter = require("./routes/googleRouter");
 
-secuirty
+// security
 app.use(cors());
 app.use(helmet());
 
