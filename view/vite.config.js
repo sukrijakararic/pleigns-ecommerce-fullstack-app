@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://pleigns-api.onrender.com',
+        target: 'http://localhost:4000',
         changeOrigin: true,
       },
     },
