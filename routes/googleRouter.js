@@ -1,6 +1,5 @@
 // Google authentication
 const passport = require("../strategies/main");
-const db = require("../db/pool");
 const express = require("express");
 const googleRouter = express.Router();
 const { REDIRECTURL } = process.env;

@@ -28,14 +28,14 @@ redisClient.connect().catch(console.error);
 
 app.use(
   session({
-    store: new RedisStore({ client: redisClient }),
+   store: new RedisStore({ client: redisClient }),
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
       maxAge: 3600000, // 1 hour
       httpOnly: true,
-      secure: true,
+      secure: false,
     },
   })
 );
