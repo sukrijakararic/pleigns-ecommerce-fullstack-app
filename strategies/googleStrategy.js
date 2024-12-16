@@ -9,7 +9,7 @@ module.exports = function (passport) {
         clientID:
           CLIENTID,
         clientSecret: CLIENTSECRET,
-        callbackURL: CALLBACKURL,
+        callbackURL: '/api/google/callback',
       },
       async function (accessToken, refreshToken, profile, done) {
         try {
