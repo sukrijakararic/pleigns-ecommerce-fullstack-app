@@ -1,24 +1,22 @@
-# e-commerce Full Stack Project, Pleigns
+# E-commerce Full Stack Project, Pleigns
 
-Welcome to Pleigns! If you would like to visit my website, please go to 
+Welcome to Pleigns! To visit my website, please go to [https://pleigns-api.onrender.com](https://pleigns-api.onrender.com).
 
-This project is a full-stack app incorporating a restfull api that i built to interact with the client.
+This project is a full-stack application incorporating a RESTful API that I built to interact with the client.
 
 
 ## Authentication
-I used Passport.js for my user authentication. A User is able to make an account, sign in, add items to thier cart, as well as place an order by inputing card information and even deleting the placed order.
+I used Passport.js for user authentication. A user can create an account, sign in, add items to their cart, place an order by entering card information, and even delete a placed order.
 
 ## Database
+I used PostgreSQL to build my database as it is what I'm most familiar with, and I consider it a key strength of mine. I ensured to create tables with different types of relationships, such as many-to-many and one-to-many.
 
-I used PostgreSQL to make my database. Its what I'm most familiar with and I think its a key-strength of mine. I made sure to make tables that are connected with defferent types of relationships such as many to many, and one to many.
-
-This allowed me to add data and referece data from other tables efficiently and easily.
+This design allows me to efficiently and easily add and reference data from other tables.
 
 
 ## Hosting
-To host the app, I used Render. I hosted my server and API as a webservice and my frontend as a static website. The static site makes http calls to my server and my server serves the necessary responses.
+I used Render to host the app. My server and API are hosted as a web service, and the frontend is hosted as a static website. The static site makes HTTP calls to my server, which returns the necessary responses.
 
 
 ## Code Architecture
-
-As far as code architecture goes, I chose the MVC (model, view, controller) design pattern. I wanted to challenge myself and use something that was new to me. I learned a lot in order to implement and have the view talk to the server without any hiccups.
+Regarding code architecture, I chose the MVC (Model-View-Controller) design pattern. I wanted to challenge myself by using something new to me. I learned a lot to implement this pattern and ensure seamless communication between the view and the server.
