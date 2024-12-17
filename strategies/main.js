@@ -2,6 +2,8 @@ const { getUserById } = require("../queries/user");
 const passport = require("passport");
 const localStrategy = require("./local");
 const googleStrategy = require("./googleStrategy");
+const githubStrategy = require("./githubStrategy");
+
 
 
 // Serialize user for session
@@ -18,6 +20,7 @@ passport.deserializeUser(function (user, done) {
 
 googleStrategy(passport);
 localStrategy(passport);
+githubStrategy(passport);
 
 
 

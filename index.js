@@ -15,6 +15,7 @@ const productsRouter = require("./routes/products");
 const cartRouter = require("./routes/cart");
 const orderRouter = require("./routes/order");
 const googleRouter = require("./routes/googleRouter");
+const githubRouter = require("./routes/githubRouter");
 
 // security
 app.use(cors());
@@ -25,16 +26,18 @@ const redisClient = createClient({
   url: process.env.REDIS_URL,
 });
 
-redisClient.connect().catch(console.error);
+//redisClient.connect().catch(console.error);
 
 app.use(
   session({
-   store: new RedisStore({ client: redisClient }),
+   //store: new RedisStore({ client: redisClient }),
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-
+      maxAge: 60 * 60 * 1000,
+      httpOnly: true,
+      secure: false,
     },
   })
 );
@@ -55,7 +58,8 @@ app.use(
   productsRouter,
   cartRouter,
   orderRouter,
-  googleRouter
+  googleRouter,
+  githubRouter
 );
 
 app.listen(PORT, () => {
