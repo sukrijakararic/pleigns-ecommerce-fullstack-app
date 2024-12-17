@@ -15,10 +15,8 @@ googleRouter.get(
   "/google/callback",
   passport.authenticate("google", {
     failureRedirect: "/api/users/failedLogin",
-  }),
-  (req, res) => {
-    res.status(200).redirect(REDIRECTURL);
-  }
+    successRedirect: REDIRECTURL,
+  })
 );
 
 module.exports = googleRouter;
