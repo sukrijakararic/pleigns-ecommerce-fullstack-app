@@ -26,11 +26,11 @@ const redisClient = createClient({
   url: process.env.REDIS_URL,
 });
 
-//redisClient.connect().catch(console.error);
+redisClient.connect().catch(console.error);
 
 app.use(
   session({
-   //store: new RedisStore({ client: redisClient }),
+   store: new RedisStore({ client: redisClient }),
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,

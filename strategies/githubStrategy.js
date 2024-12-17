@@ -8,7 +8,7 @@ module.exports = function (passport) {
           {
             clientID: GITCLIENT_ID,
             clientSecret: GITCLIENT_SECRET,
-            callbackURL: "http://localhost:4000/api/github/callback",
+            callbackURL: "https://pleigns-api.onrender.com/api/github/callback",
           },
           async function (accessToken, refreshToken, profile, done) {
                   try {
