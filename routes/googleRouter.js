@@ -7,7 +7,7 @@ const { REDIRECTURL } = process.env;
 googleRouter.get(
   "/google",
   passport.authenticate("google", {
-    scope: ["email", "profile"],
+    scope: ["profile"],
   })
 );
 
