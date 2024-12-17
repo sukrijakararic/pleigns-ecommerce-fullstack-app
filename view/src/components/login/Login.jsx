@@ -47,8 +47,8 @@ const handleLogin = async (event) => {
       <Button variant="success" type="submit">
         Submit
       </Button>
-      <p>Or log in with</p>
-      <GoogleOauth />
+      {/*<p>Or log in with</p>
+      <GoogleOauth />*/}
       <p>
         Don't have an account? <Link to="/" className={styles.registerLink}>Register</Link>
       </p>

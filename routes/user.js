@@ -31,7 +31,7 @@ userRouter.post(
   "/users/login",
   passport.authenticate("local", { failureRedirect: "/api/users/failedLogIn" }),
   (req, res) => {
-    res.json({ message: "Logged in", user: req.user });
+    res.json({ message: "Logged in" });
   }
 );
 
