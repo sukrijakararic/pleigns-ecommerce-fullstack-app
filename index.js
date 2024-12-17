@@ -38,7 +38,6 @@ app.use(
       maxAge: 60 * 60 * 1000,
       httpOnly: true,
       secure: true,
-      domain: "https://pleigns-ecommerce-fullstack-app.onrender.com/"
     },
   })
 );
