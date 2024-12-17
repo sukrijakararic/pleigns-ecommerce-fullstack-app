@@ -8,7 +8,7 @@ export const GoogleOauth = () => {
   const { setLoggedIn } = useContext(AuthContext);
 
   const handleGoogleOauth = async () => {
-    window.location.href = `/api/github`;
+    window.location.href = `/api/google`;
     setLoggedIn(true);
   };
 
