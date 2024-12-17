@@ -9,8 +9,10 @@ githubRouter.get(
   "/github/callback",
   passport.authenticate("github", {
     failureRedirect: "/api/users/failedLogin",
-    successRedirect: REDIRECTURL,
-  })
-);
+  }),
+  (req, res) => {
+    res.cookie("token", req.user.token);
+    res.status(200).redirect(REDIRECTURL);
+  });
 
 module.exports= githubRouter;
