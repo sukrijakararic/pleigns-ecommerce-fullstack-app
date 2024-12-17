@@ -52,7 +52,13 @@ export const logout = async () => {
 
 export const getUser = async () => {
   try {
-    const response = await fetch("/api/users/loggedIn");
+    const response = await fetch("/api/users/loggedIn", {
+      withCredentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": "true",
+      },
+    });
     const data = await response.json();
     return data;
   } catch (error) {
