@@ -142,7 +142,7 @@ const getUserByIdForRouter = async (request, response, next) => {
 
 const showUser = async (request, response, next) => {
   console.log("showUser: ", request.user);
-  if (!request.user) {
+  if (!request.isAuthenticated()) {
     response.status(401).json({ message: "Please log in" });
   } else {
     const result = await db.query("SELECT email, firstname, lastname FROM users where email = $1", [
