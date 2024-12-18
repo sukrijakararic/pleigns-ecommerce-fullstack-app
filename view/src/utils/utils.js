@@ -1,4 +1,4 @@
-const GOOGLESERVERURL = "/api/google";
+export const GOOGLESERVERURL = "/api/google";
 
 export const addUser = async (user) => {
   try {
