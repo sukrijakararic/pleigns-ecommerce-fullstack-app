@@ -23,7 +23,7 @@ export const Registration = () => {
     event.target.reset();
     document.getElementById("responseStatus").textContent = response.message;
     if (response.message === "User created") {
-      Navigate("/");
+      Navigate("/login");
     }
   };
 
@@ -64,13 +64,13 @@ export const Registration = () => {
       <p className={styles.responseStatus} id="responseStatus"></p>
       
       {/* <p className={styles.oauthRegister}>Or register with</p>
-      <GoogleOauth />
+      <GoogleOauth />*/}
       <p className={styles.oauthRegister}>
         Already have an account?{" "}
         <Link to="/login" className={styles.loginLink}>
           Login
         </Link>
-      </p> */}
+      </p>
     </form>
   );
 };
