@@ -9,7 +9,7 @@ const session = require("express-session");
 const { createClient } = require("redis");
 const { RedisStore } = require("connect-redis");
 const cookieParser = require("cookie-parser");
-import { createProxyMiddleware } from 'http-proxy-middleware';
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const userRouter = require("./routes/user");
 const productsRouter = require("./routes/products");
@@ -22,12 +22,12 @@ const githubRouter = require("./routes/githubRouter");
 app.use(cors());
 app.use(helmet());
 
+
 app.use('/api', createProxyMiddleware({
-  target: 'https://pleigns-api.onrender.com', // your server URL
+  target: 'https://pleigns-api.onrender.com', // server URL
   changeOrigin: true,
   pathRewrite: { '^/api': '' },
 }));
-
 
 const redisClient = createClient({
   url: process.env.REDIS_URL,
