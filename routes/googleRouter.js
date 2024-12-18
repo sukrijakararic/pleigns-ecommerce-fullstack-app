@@ -17,7 +17,7 @@ googleRouter.get(
     failureRedirect: "/api/users/failedLogin",
   }),
   (req, res) => {
-    res.status(200).redirect("/api/users/loggedIn");
+    res.status(200).redirect("https://pleigns.onrender.com/api/users/loggedIn");
   }
 );
 
