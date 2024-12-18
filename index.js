@@ -24,9 +24,8 @@ app.use(helmet());
 
 
 app.use('/api', createProxyMiddleware({
-  target: 'https://pleigns-api.onrender.com', // server URL
+  target: 'https://pleigns-api.onrender.com/api', // server URL
   changeOrigin: true,
-  pathRewrite: { '^/api': '' },
 }));
 
 const redisClient = createClient({
