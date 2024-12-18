@@ -1,4 +1,4 @@
-const GoogleStrategy = require("passport-google-oidc").Strategy;
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const { CLIENTID, CLIENTSECRET, CALLBACKURL } = process.env;
 const db = require("../db/pool");
 
@@ -9,7 +9,7 @@ module.exports = function (passport) {
         clientID:
           CLIENTID,
         clientSecret: CLIENTSECRET,
-        callbackURL: 'https://pleigns.onrender.com/api/google/callback',
+        callbackURL: 'https://pleigns-api.onrender.com/api/google/callback',
       },
       async function (accessToken, refreshToken, profile, done) {
         try {
