@@ -23,7 +23,7 @@ app.use(cors());
 app.use(helmet());
 
 
-app.use('/api', createProxyMiddleware({
+/*app.use('/api', createProxyMiddleware({
   target: 'https://pleigns-api.onrender.com',
   changeOrigin: true,
   pathRewrite: {
@@ -39,7 +39,7 @@ app.use('/api', createProxyMiddleware({
     console.error(`Proxy error: ${err.message}`);
     res.status(500).send('Proxy error');
   }
-}));
+}));*/
 
 const redisClient = createClient({
   url: process.env.REDIS_URL,
