@@ -1,4 +1,4 @@
-export const serverUrlGoogle = "/api/google";
+
 
 export const addUser = async (user) => {
   try {
@@ -60,6 +60,22 @@ export const getUser = async () => {
     throw error;
   }
 };
+
+export const loginGoogle = async () => {
+    const response = await fetch('/api/google', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      const authorizationUrl = data.authorizationUrl;
+      window.location = authorizationUrl;
+    })
+    .catch(error => console.error(error));
+  }
 
 export const getProducts = async () => {
   try {
