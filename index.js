@@ -24,7 +24,7 @@ app.use(helmet());
 
 
 app.use('/api', createProxyMiddleware({
-  target: 'https://pleigns-api.onrender.com/api', // server URL
+  target: 'https://pleigns-api.onrender.com', //server URL
   changeOrigin: true,
 }));
 
