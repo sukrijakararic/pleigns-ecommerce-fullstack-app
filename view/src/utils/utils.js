@@ -1,5 +1,3 @@
-
-
 export const addUser = async (user) => {
   try {
     const response = await fetch("/api/users/register", {
@@ -61,7 +59,7 @@ export const getUser = async () => {
   }
 };
 
-export const loginGoogle = async () => {
+/*export const loginGoogle = async () => {
     const response = await fetch('/api/google', {
       method: 'GET',
       credentials: 'include',
@@ -75,7 +73,20 @@ export const loginGoogle = async () => {
       window.location = authorizationUrl;
     })
     .catch(error => console.error(error));
-  }
+  }*/
+
+export const loginGoogle = async () => {
+  const response = await fetch("/api/google", {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error(error));
+};
 
 export const getProducts = async () => {
   try {
