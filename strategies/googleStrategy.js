@@ -1,4 +1,4 @@
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const GoogleStrategy = require("passport-google-oidc").Strategy;
 const { CLIENTID, CLIENTSECRET, CALLBACKURL } = process.env;
 const db = require("../db/pool");
 
