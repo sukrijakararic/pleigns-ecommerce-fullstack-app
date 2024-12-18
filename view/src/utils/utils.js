@@ -1,3 +1,5 @@
+const GOOGLESERVERURL = "/api/google";
+
 export const addUser = async (user) => {
   try {
     const response = await fetch("/api/users/register", {
@@ -75,7 +77,7 @@ export const getUser = async () => {
     .catch(error => console.error(error));
   }*/
 
-export const loginGoogle = async () => {
+/* export const loginGoogle = async () => {
   const response = await fetch("/api/google", {
     method: "GET",
     credentials: "include",
@@ -86,7 +88,7 @@ export const loginGoogle = async () => {
     .then((response) => response.json())
     .then((data) => console.log(data))
     .catch((error) => console.error(error));
-};
+};*/
 
 export const getProducts = async () => {
   try {
