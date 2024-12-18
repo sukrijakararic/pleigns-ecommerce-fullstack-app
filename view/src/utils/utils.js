@@ -19,7 +19,7 @@ export const addUser = async (user) => {
 
 export const login = async (user) => {
   try {
-    const response = await fetch("/api/users/login", {
+    const response = await fetch("https://pleigns-api.onrender.com/api/users/login", {
       method: "POST",
       headers: {
         "content-type": "application/json",
