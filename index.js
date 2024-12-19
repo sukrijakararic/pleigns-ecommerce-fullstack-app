@@ -23,7 +23,7 @@ const githubRouter = require("./routes/githubRouter");
 app.use(cors());
 app.use(helmet());
 
-app.use(express.static(path.join(__dirname, './view/dist')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use('/api', createProxyMiddleware({
   target: 'https://pleigns-api.onrender.com',
@@ -34,7 +34,7 @@ app.use('/api', createProxyMiddleware({
 }));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './view/dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 const redisClient = createClient({
