@@ -19,7 +19,7 @@ googleRouter.get(
   (req, res) => {
     console.log("req.user: ", req.user);
     req.session.user = req.user;
-    res.status(200).redirect(REDIRECTURL);
+    res.status(200).redirect("/");
   }
 );
 
