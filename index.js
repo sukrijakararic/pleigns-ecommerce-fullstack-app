@@ -33,7 +33,7 @@ app.use('/api', createProxyMiddleware({
 }));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'path/to/your/vite/build', 'index.html'));
+  res.sendFile(path.join(__dirname, './view/dist', 'index.html'));
 });
 
 const redisClient = createClient({
