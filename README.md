@@ -1,8 +1,10 @@
 # E-commerce Full Stack Project, Pleigns
 
-Welcome to Pleigns! To visit my website, please go to [https://pleigns.onrender.com/](https://pleigns.onrender.com/).
+Welcome to Pleigns! To visit my website, please go to [https://pleigns-api.onrender.com/](https://pleigns-api.onrender.com/).
 
 This project is a full-stack application incorporating a RESTful API that I built to interact with the client.
+
+It was built using the PERN stack. This was my most challenging yet rewarding project and I hope you enjoy!
 
 
 ## Authentication
