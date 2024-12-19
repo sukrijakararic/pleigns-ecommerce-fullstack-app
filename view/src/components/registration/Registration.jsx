@@ -63,8 +63,8 @@ export const Registration = () => {
       </Button>{" "}
       <p className={styles.responseStatus} id="responseStatus"></p>
       
-      {/* <p className={styles.oauthRegister}>Or register with</p>
-      <GoogleOauth />*/}
+      <p className={styles.oauthRegister}>Or register with</p>
+      <GoogleOauth />
       <p className={styles.oauthRegister}>
         Already have an account?{" "}
         <Link to="/login" className={styles.loginLink}>

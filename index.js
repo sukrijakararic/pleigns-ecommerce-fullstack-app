@@ -9,7 +9,7 @@ const session = require("express-session");
 const { createClient } = require("redis");
 const { RedisStore } = require("connect-redis");
 const cookieParser = require("cookie-parser");
-
+const path = require("path");
 
 const userRouter = require("./routes/user");
 const productsRouter = require("./routes/products");
@@ -27,11 +27,11 @@ const redisClient = createClient({
   url: process.env.REDIS_URL,
 });
 
-//redisClient.connect().catch(console.error);
+redisClient.connect().catch(console.error);
 
 app.use(
   session({
-   //store: new RedisStore({ client: redisClient }),
+    store: new RedisStore({ client: redisClient }),
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
@@ -47,7 +47,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.set("trust proxy", 4); // Trust the first proxy
 
-
 //body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -62,6 +61,11 @@ app.use(
   googleRouter,
   githubRouter
 );
+
+// Catch-all route to serve index.html for all other requests
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
