@@ -22,24 +22,19 @@ const githubRouter = require("./routes/githubRouter");
 app.use(cors());
 app.use(helmet());
 
+app.use(express.static(path.join(__dirname, './view/dist')));
 
-/*app.use('/api', createProxyMiddleware({
+app.use('/api', createProxyMiddleware({
   target: 'https://pleigns-api.onrender.com',
   changeOrigin: true,
   pathRewrite: {
-    '^/api': ''
+    '^/api': '', // Remove /api prefix when forwarding to the target
   },
-  onProxyReq: (proxyReq, req) => {
-    console.log(`Proxy request to ${proxyReq.url}`);
-  },
-  onProxyRes: (proxyRes, req, res) => {
-    console.log(`Proxy response from ${proxyRes.statusCode}`);
-  },
-  onError: (err, req, res) => {
-    console.error(`Proxy error: ${err.message}`);
-    res.status(500).send('Proxy error');
-  }
-}));*/
+}));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'path/to/your/vite/build', 'index.html'));
+});
 
 const redisClient = createClient({
   url: process.env.REDIS_URL,
