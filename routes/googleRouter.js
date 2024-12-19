@@ -17,6 +17,7 @@ googleRouter.get(
     failureRedirect: "/api/users/failedLogin",
   }),
   (req, res) => {
+    console.log("req.user: ", req.user);
     req.session.user = req.user;
     res.status(200).redirect(REDIRECTURL);
   }
