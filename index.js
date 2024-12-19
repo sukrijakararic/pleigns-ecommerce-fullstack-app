@@ -10,6 +10,7 @@ const { createClient } = require("redis");
 const { RedisStore } = require("connect-redis");
 const cookieParser = require("cookie-parser");
 const { createProxyMiddleware } = require('http-proxy-middleware');
+const path = require('path');
 
 const userRouter = require("./routes/user");
 const productsRouter = require("./routes/products");
