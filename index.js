@@ -7,8 +7,9 @@ const { PORT, SESSION_SECRET } = require("./config");
 const passport = require("./strategies/main");
 const session = require("express-session");
 const { createClient } = require("redis");
-//const { RedisStore } = require("connect-redis");
+const { RedisStore } = require("connect-redis");
 const path = require("path");
+const cookieParser = require("cookie-parser");
 
 const userRouter = require("./routes/user");
 const productsRouter = require("./routes/products");
@@ -26,7 +27,7 @@ const redisClient = createClient({
   url: process.env.REDIS_URL,
 });
 
-//redisClient.connect().catch(console.error);
+redisClient.connect().catch(console.error);
 
 app.use(
   session({
@@ -44,7 +45,8 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-//app.set("trust proxy", 4); // Trust the first proxy
+app.use(cookieParser());
+app.set("trust proxy", 4); // Trust the first proxy
 
 //body parser
 app.use(bodyParser.json());
