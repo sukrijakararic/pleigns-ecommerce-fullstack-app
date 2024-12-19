@@ -44,6 +44,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.set("trust proxy", 4); // Trust the first proxy
 
 //body parser
 app.use(bodyParser.json());
