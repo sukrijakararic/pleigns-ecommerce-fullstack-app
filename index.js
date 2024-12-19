@@ -8,7 +8,6 @@ const passport = require("./strategies/main");
 const session = require("express-session");
 const { createClient } = require("redis");
 const { RedisStore } = require("connect-redis");
-const cookieParser = require("cookie-parser");
 const path = require("path");
 
 const userRouter = require("./routes/user");
@@ -45,12 +44,10 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.set("trust proxy", 4); // Trust the first proxy
 
 //body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 app.use(
   "/api",
