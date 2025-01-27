@@ -13,6 +13,7 @@ module.exports = function (passport) {
       },
       async function (accessToken, refreshToken, profile, done) {
         try {
+          console.log(profile)
           const result = await db.query("SELECT * FROM users WHERE email = $1", [
             profile.emails[0].value,
           ]);
