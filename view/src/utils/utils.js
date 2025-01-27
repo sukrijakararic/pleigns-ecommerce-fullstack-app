@@ -61,35 +61,6 @@ export const getUser = async () => {
   }
 };
 
-/*export const loginGoogle = async () => {
-    const response = await fetch('/api/google', {
-      method: 'GET',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-      const authorizationUrl = data.authorizationUrl;
-      window.location = authorizationUrl;
-    })
-    .catch(error => console.error(error));
-  }*/
-
-/* export const loginGoogle = async () => {
-  const response = await fetch("/api/google", {
-    method: "GET",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.error(error));
-};*/
-
 export const getProducts = async () => {
   try {
     const response = await fetch("/api/products/");
