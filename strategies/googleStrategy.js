@@ -23,7 +23,7 @@ module.exports = function (passport) {
     
           const insertedUser = await db.query(
             "INSERT INTO users (email, firstname, lastname, google_profile) VALUES ($1, $2, $3, $4) RETURNING *",
-            [profile.emails[0].value, profile.name.givenName, profile.name.familyName, profile]
+            [profile.emails[0].value, profile.name.given_name, profile.name.family_name, profile]
           );
     
           const userId = insertedUser.rows[0].id;
