@@ -13,8 +13,6 @@ module.exports = function (passport) {
       },
       async function (accessToken, refreshToken, profile, done) {
         try {
-          console.log(profile)
-          console.log(profile.name)
           const result = await db.query("SELECT * FROM users WHERE email = $1", [
             profile.emails[0].value,
           ]);
@@ -24,7 +22,7 @@ module.exports = function (passport) {
     
           const insertedUser = await db.query(
             "INSERT INTO users (email, firstname, lastname, google_profile) VALUES ($1, $2, $3, $4) RETURNING *",
-            [profile.emails[0].value, profile.name.given_name, profile.name.family_name, profile]
+            [profile.emails[0].value, profile.name.givenName, profile.name.familyName, profile]
           );
     
           const userId = insertedUser.rows[0].id;
