@@ -7,7 +7,7 @@ const googleRouter = express.Router();
 googleRouter.get(
   "/google",
   passport.authenticate("google", {
-    scope: ["email"],
+    scope: ["email", "profile"],
   })
 );
 
