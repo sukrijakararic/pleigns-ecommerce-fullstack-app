@@ -10,6 +10,10 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('loggedIn', loggedIn.toString());
+
+    window.addEventListener('beforeunload', () => {
+      setLoggedIn(false);
+    });
   }, [loggedIn]);
 
   return (
