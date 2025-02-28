@@ -13,7 +13,7 @@ export const Footer = () => {
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-            Made with frustration &lt;3
+            Made with love &lt;3
           </Navbar.Text>
         </Navbar.Collapse>
       </Container>
